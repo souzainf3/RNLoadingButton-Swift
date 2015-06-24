@@ -213,12 +213,13 @@ public class RNLoadingButton: UIButton {
         self.setNeedsLayout();
     }
     
-    func activityIndicatorStyleForState(state: UIControlState) ->UIActivityIndicatorViewStyle {
-        
+    func activityIndicatorStyleForState(state: UIControlState) -> UIActivityIndicatorViewStyle
+    {
         var style:UIActivityIndicatorViewStyle  = defaultActivityStyle
-        if let styleObj: AnyObject = self.getValueForControlState(self.indicatorStyles, state: state) {
+        if let styleObj: AnyObject = self.getValueForControlState(self.indicatorStyles, state: state)
+        {
             // https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/swift_programming_language/Enumerations.html
-            style = UIActivityIndicatorViewStyle(rawValue: (styleObj as NSNumber).integerValue)!
+            style = UIActivityIndicatorViewStyle(rawValue: (styleObj as! NSNumber).integerValue)!
         }
         return style
     }
@@ -260,7 +261,7 @@ public class RNLoadingButton: UIButton {
     
     //##############################
     //      Helper
-    func addObserver(forKeyPath keyPath:NSString!) {
+    func addObserver(forKeyPath keyPath:String) {
         self.addObserver(self, forKeyPath:keyPath, options: (NSKeyValueObservingOptions.Initial|NSKeyValueObservingOptions.New), context: nil)
     }
     
