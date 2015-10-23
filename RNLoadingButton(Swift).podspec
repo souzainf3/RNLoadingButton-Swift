@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   # s.authors            = { "Romilson Nunes" => "souzainf3@yahoo.com.br" }
   # s.social_media_url   = "http://twitter.com/souzainf3"
   s.platform     = :ios, "8.0"
-  s.source       = { :git => "https://github.com/souzainf3/RNLoadingButton-Swift.git", :tag => "0.0.1" }
+  s.source       = { :git => "https://github.com/souzainf3/RNLoadingButton-Swift.git", :tag => "1.0.0" }
 
   s.source_files  = "RNLoadingButton/*"
   s.frameworks = "UIKit"
