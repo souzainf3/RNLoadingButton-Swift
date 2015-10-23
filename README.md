@@ -17,7 +17,7 @@ You can Also choose the position of easily activity indicator or Set It up with 
 
 ## Requirements
 
-* iOS 8.0+ / Mac OS X 10.9+ / watchOS 2
+* iOS 8.0+ / Mac OS X 10.9+
 * Xcode 7.0+
 
 ## Adding RNLoadingButton(Swift) to your project
