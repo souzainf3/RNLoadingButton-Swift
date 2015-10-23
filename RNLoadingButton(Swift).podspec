@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "RNLoadingButton(Swift)"
-  s.version      = "0.0.1"
+  s.version      = "1.0.0"
   s.summary      = "An easy-to-use UIButton subclass with an activity indicator."
 
   s.description  = <<-DESC
