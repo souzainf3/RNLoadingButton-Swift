@@ -12,7 +12,13 @@ You can Also choose the position of easily activity indicator or Set It up with 
 [![](https://raw.githubusercontent.com/souzainf3/RNLoadingButton-Swift/master/RNLoadingButtonDemo/Screens/screen1.png)](https://raw.githubusercontent.com/souzainf3/RNLoadingButton-Swift/master/RNLoadingButtonDemo/Screens/screen1.png)
 [![](https://raw.githubusercontent.com/souzainf3/RNLoadingButton-Swift/master/RNLoadingButtonDemo/Screens/screen2.png)](https://raw.githubusercontent.com/souzainf3/RNLoadingButton-Swift/master/RNLoadingButtonDemo/Screens/screen2.png)
 
+## Features
+[x] Swift 2
 
+## Requirements
+
+* iOS 8.0+ / Mac OS X 10.9+ / watchOS 2
+* Xcode 7.0+
 
 ## Adding RNLoadingButton(Swift) to your project
 
