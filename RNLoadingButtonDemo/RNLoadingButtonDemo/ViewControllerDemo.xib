@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9058" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9048"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewControllerDemo" customModule="RNLoadingButtonDemo" customModuleProvider="target">
@@ -17,8 +17,12 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CBk-QH-8SU" customClass="RNLoadingButton" customModule="RNLoadingButtonDemo">
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CBk-QH-8SU" customClass="RNLoadingButton" customModule="RNLoadingButtonDemo">
                     <rect key="frame" x="90" y="71" width="141" height="36"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="141" id="VEY-XZ-FFr"/>
+                        <constraint firstAttribute="height" constant="36" id="Xsi-kc-Ij3"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                     <state key="normal" title="Login" backgroundImage="btn_background_141x36.png">
                         <color key="titleColor" red="0.25098040700000002" green="0.41176474089999998" blue="0.63529413940000001" alpha="1" colorSpace="deviceRGB"/>
@@ -34,8 +38,12 @@
                         <action selector="doTap:" destination="-1" eventType="touchUpInside" id="73q-yP-tGz"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eMu-tn-nT1" customClass="RNLoadingButton" customModule="RNLoadingButtonDemo">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eMu-tn-nT1" customClass="RNLoadingButton" customModule="RNLoadingButtonDemo">
                     <rect key="frame" x="15" y="124" width="290" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="290" id="6s1-Ky-suQ"/>
+                        <constraint firstAttribute="height" constant="44" id="izn-aK-wjA"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                     <state key="normal" title="Load" backgroundImage="btn_background_290x36.png">
                         <color key="titleColor" red="0.79215693470000004" green="0.094117656349999995" blue="0.1098039299" alpha="1" colorSpace="deviceRGB"/>
@@ -51,8 +59,12 @@
                         <action selector="doTap:" destination="-1" eventType="touchUpInside" id="ugl-yf-wKG"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h6b-xM-vOz" customClass="RNLoadingButton" customModule="RNLoadingButtonDemo">
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h6b-xM-vOz" customClass="RNLoadingButton" customModule="RNLoadingButtonDemo">
                     <rect key="frame" x="20" y="191" width="290" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="290" id="352-9q-dRI"/>
+                        <constraint firstAttribute="height" constant="44" id="eFl-T0-gBo"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                     <state key="normal" title="Hide text when loading " backgroundImage="btn_background_290x36.png">
                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -68,8 +80,12 @@
                         <action selector="buttonTapAction:" destination="-1" eventType="touchUpInside" id="uZy-pP-uRb"/>
                     </connections>
                 </button>
-                <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vmx-pv-AYF" customClass="RNLoadingButton" customModule="RNLoadingButtonDemo" customModuleProvider="target">
+                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vmx-pv-AYF" customClass="RNLoadingButton" customModule="RNLoadingButtonDemo" customModuleProvider="target">
                     <rect key="frame" x="138" y="262" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="44" id="YZJ-PT-BGq"/>
+                        <constraint firstAttribute="height" constant="44" id="jfk-7p-zw1"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal" image="icon_favorito2_off.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -81,6 +97,16 @@
                 </button>
             </subviews>
             <color key="backgroundColor" red="0.93333339691162109" green="0.93333339691162109" blue="0.93333339691162109" alpha="1" colorSpace="deviceRGB"/>
+            <constraints>
+                <constraint firstItem="eMu-tn-nT1" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="FQZ-If-cmF"/>
+                <constraint firstItem="eMu-tn-nT1" firstAttribute="top" secondItem="CBk-QH-8SU" secondAttribute="bottom" constant="17" id="IlD-Gt-Uge"/>
+                <constraint firstItem="h6b-xM-vOz" firstAttribute="top" secondItem="eMu-tn-nT1" secondAttribute="bottom" constant="23" id="J7u-Xt-ONy"/>
+                <constraint firstItem="CBk-QH-8SU" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Ob6-Yg-sWn"/>
+                <constraint firstItem="Vmx-pv-AYF" firstAttribute="top" secondItem="h6b-xM-vOz" secondAttribute="bottom" constant="27" id="QkB-q5-eR7"/>
+                <constraint firstItem="h6b-xM-vOz" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Z2i-xj-fvH"/>
+                <constraint firstItem="CBk-QH-8SU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="71" id="bXh-de-7as"/>
+                <constraint firstItem="Vmx-pv-AYF" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="xTf-qT-3cT"/>
+            </constraints>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
