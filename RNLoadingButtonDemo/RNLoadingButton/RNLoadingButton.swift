@@ -51,7 +51,6 @@ public class RNLoadingButton: UIButton {
     
     public let activityIndicatorView:UIActivityIndicatorView! = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
     
-    
     // Internal properties
     let imagens:NSMutableDictionary! = NSMutableDictionary()
     let texts:NSMutableDictionary! = NSMutableDictionary()
@@ -59,12 +58,14 @@ public class RNLoadingButton: UIButton {
     
     // Static
     let defaultActivityStyle = UIActivityIndicatorViewStyle.Gray
+
     
+    // MARK: - Initializers
     
-    func setActivityIndicatorStyle( style:UIActivityIndicatorViewStyle, state:UIControlState) {
-        var s:NSNumber = NSNumber(integer: style.rawValue);
-        setControlState( s, dic: indicatorStyles, state: state)
-        self.setNeedsLayout()
+    deinit {
+        self.removeObserver(forKeyPath: "self.state")
+        self.removeObserver(forKeyPath: "self.selected")
+        self.removeObserver(forKeyPath: "self.highlighted")
     }
     
     override init(frame: CGRect) {
@@ -74,7 +75,7 @@ public class RNLoadingButton: UIButton {
         commonInit()
     }
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
     }
@@ -98,59 +99,23 @@ public class RNLoadingButton: UIButton {
             self.storeValue(super.imageForState(UIControlState.Selected), onDic: imagens, state: UIControlState.Selected)
         }
         
-        
-        
         // Title - Texts
-        if let titleNormal = super.titleForState(.Normal)
-        {
+        if let titleNormal = super.titleForState(.Normal) {
             self.storeValue(titleNormal, onDic: texts, state: .Normal)
         }
-        if let titleHighlighted = super.titleForState(.Highlighted)
-        {
+        if let titleHighlighted = super.titleForState(.Highlighted) {
             self.storeValue(titleHighlighted, onDic: texts, state: .Highlighted)
         }
-        if let titleDisabled = super.titleForState(.Disabled)
-        {
+        if let titleDisabled = super.titleForState(.Disabled) {
             self.storeValue(titleDisabled, onDic: texts, state: .Disabled)
         }
-        if let titleSelected = super.titleForState(.Selected)
-        {
+        if let titleSelected = super.titleForState(.Selected) {
             self.storeValue(titleSelected, onDic: texts, state: .Selected)
         }
         
     }
     
-    
-    override public func layoutSubviews() {
-        super.layoutSubviews()
-        
-        var style=self.activityIndicatorStyleForState(self.currentControlState())
-        self.activityIndicatorView.activityIndicatorViewStyle = style
-        self.activityIndicatorView.frame = self.frameForActivityIndicator()
-        self.bringSubviewToFront(self.activityIndicatorView)
-    }
-    
-    
-    deinit {
-        self.removeObserver(forKeyPath: "self.state")
-        self.removeObserver(forKeyPath: "self.selected")
-        self.removeObserver(forKeyPath: "self.highlighted")
-    }
-    
-    
-    //############################
-    //      Setup e init        //
-    
-    func setupActivityIndicator() {
-        self.activityIndicatorView.hidesWhenStopped = true
-        self.activityIndicatorView.startAnimating()
-        self.addSubview(self.activityIndicatorView)
-        
-        var tap = UITapGestureRecognizer(target: self, action: Selector("activityIndicatorTapped:"))
-        self.activityIndicatorView.addGestureRecognizer(tap)
-    }
-    
-    func commonInit() {
+    private func commonInit() {
         
         self.adjustsImageWhenHighlighted = true
         
@@ -167,7 +132,7 @@ public class RNLoadingButton: UIButton {
         self.imagens.setValue(super.imageForState(UIControlState.Selected), forKey: "\(UIControlState.Selected.rawValue)")
         
         /** Indicator Styles for States */
-        var s:NSNumber = NSNumber(integer: defaultActivityStyle.rawValue)
+        let s:NSNumber = NSNumber(integer: defaultActivityStyle.rawValue)
         self.indicatorStyles.setValue(s, forKey: "\(UIControlState.Normal.rawValue)")
         self.indicatorStyles.setValue(s, forKey: "\(UIControlState.Highlighted.rawValue)")
         self.indicatorStyles.setValue(s, forKey: "\(UIControlState.Disabled.rawValue)")
@@ -176,13 +141,61 @@ public class RNLoadingButton: UIButton {
         self.addObserver(forKeyPath: "self.state")
         self.addObserver(forKeyPath: "self.selected")
         self.addObserver(forKeyPath: "self.highlighted")
-        
     }
+    
+    
+    // MARK: - Relayout
+    
+    override public func layoutSubviews() {
+        super.layoutSubviews()
+        
+        let style = self.activityIndicatorStyleForState(self.currentControlState())
+        self.activityIndicatorView.activityIndicatorViewStyle = style
+        self.activityIndicatorView.frame = self.frameForActivityIndicator()
+        self.bringSubviewToFront(self.activityIndicatorView)
+    }
+    
+    // MARK: - Public Methods
+    
+    public func setActivityIndicatorStyle( style:UIActivityIndicatorViewStyle, state:UIControlState) {
+        let s:NSNumber = NSNumber(integer: style.rawValue);
+        setControlState( s, dic: indicatorStyles, state: state)
+        self.setNeedsLayout()
+    }
+    
+    // Activity Indicator Alignment
+    public func setActivityIndicatorAlignment(alignment: RNActivityIndicatorAlignment) {
+        activityIndicatorAlignment = alignment;
+        self.setNeedsLayout();
+    }
+    
+    public func activityIndicatorStyleForState(state: UIControlState) -> UIActivityIndicatorViewStyle {
+        var style:UIActivityIndicatorViewStyle  = defaultActivityStyle
+        if let styleObj: AnyObject = self.getValueForControlState(self.indicatorStyles, state: state)
+        {
+            // https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/swift_programming_language/Enumerations.html
+            style = UIActivityIndicatorViewStyle(rawValue: (styleObj as! NSNumber).integerValue)!
+        }
+        return style
+    }
+    
+    
+    // MARK: - Targets/Actions
     
     func activityIndicatorTapped(sender:AnyObject) {
         self.sendActionsForControlEvents(UIControlEvents.TouchUpInside)
     }
     
+    // MARK: - Internal Methods
+    
+    func setupActivityIndicator() {
+        self.activityIndicatorView.hidesWhenStopped = true
+        self.activityIndicatorView.startAnimating()
+        self.addSubview(self.activityIndicatorView)
+        
+        let tap = UITapGestureRecognizer(target: self, action: Selector("activityIndicatorTapped:"))
+        self.activityIndicatorView.addGestureRecognizer(tap)
+    }
     
     func currentControlState() -> UIControlState {
         var controlState = UIControlState.Normal.rawValue
@@ -207,29 +220,10 @@ public class RNLoadingButton: UIButton {
         setControlState(image, dic: self.imagens, state: state)
     }
     
-    // Activity Indicator Alignment
-    func setActivityIndicatorAlignment(alignment: RNActivityIndicatorAlignment) {
-        activityIndicatorAlignment = alignment;
-        self.setNeedsLayout();
-    }
-    
-    func activityIndicatorStyleForState(state: UIControlState) -> UIActivityIndicatorViewStyle
-    {
-        var style:UIActivityIndicatorViewStyle  = defaultActivityStyle
-        if let styleObj: AnyObject = self.getValueForControlState(self.indicatorStyles, state: state)
-        {
-            // https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/swift_programming_language/Enumerations.html
-            style = UIActivityIndicatorViewStyle(rawValue: (styleObj as! NSNumber).integerValue)!
-        }
-        return style
-    }
-    
-    
-    
-    //##############################
-    //       Setters & Getters
+
+    // MARK: - Override Setters & Getters
+   
     override public func setTitle(title: String!, forState state: UIControlState) {
-        println(self.texts)
         self.storeValue(title, onDic: self.texts, state: state)
         if super.titleForState(state) != title {
             super.setTitle(title, forState: state)
@@ -237,9 +231,7 @@ public class RNLoadingButton: UIButton {
         self.setNeedsLayout()
     }
     
-    
     override public func titleForState(state: UIControlState) -> String?  {
-        println(self.getValueForControlState(self.texts, state: state) as? String)
         return self.getValueForControlState(self.texts, state: state) as? String
     }
     
@@ -256,21 +248,18 @@ public class RNLoadingButton: UIButton {
     }
     
     
+    // MARK: -  Private Methods
     
-    
-    
-    //##############################
-    //      Helper
-    func addObserver(forKeyPath keyPath:String) {
-        self.addObserver(self, forKeyPath:keyPath, options: (NSKeyValueObservingOptions.Initial|NSKeyValueObservingOptions.New), context: nil)
+    private func addObserver(forKeyPath keyPath:String) {
+        self.addObserver(self, forKeyPath:keyPath, options: ([NSKeyValueObservingOptions.Initial, NSKeyValueObservingOptions.New]), context: nil)
     }
     
-    func removeObserver(forKeyPath keyPath: String!) {
+    private func removeObserver(forKeyPath keyPath: String!) {
         self.removeObserver(self, forKeyPath: keyPath)
     }
     
-    func getValueForControlState(dic:NSMutableDictionary!, state:UIControlState) -> AnyObject? {
-        var value:AnyObject? =  dic.valueForKey("\(state.rawValue)");//  dic["\(state)"];
+    private func getValueForControlState(dic:NSMutableDictionary!, state:UIControlState) -> AnyObject? {
+        let value:AnyObject? =  dic.valueForKey("\(state.rawValue)");//  dic["\(state)"];
         if (value != nil) {
             return value;
         }
@@ -331,8 +320,7 @@ public class RNLoadingButton: UIButton {
         self.setNeedsLayout()
     }
     
-    
-    func frameForActivityIndicator() -> CGRect {
+    private func frameForActivityIndicator() -> CGRect {
         
         var frame:CGRect = CGRectZero;
         frame.size = self.activityIndicatorView.frame.size;
@@ -344,16 +332,17 @@ public class RNLoadingButton: UIButton {
             // top,  left bottom right
             frame.origin.x += self.activityIndicatorEdgeInsets.left;
             frame.origin.y += self.activityIndicatorEdgeInsets.top;
+        
         case RNActivityIndicatorAlignment.Center:
             frame.origin.x = (self.frame.size.width - frame.size.width) / 2;
+       
         case RNActivityIndicatorAlignment.Right:
             var lengthOccupied:CFloat = 0;
             var x:CFloat = 0;
-            var imageView:UIImageView = self.imageView!;
-            var titleLabel:UILabel = self.titleLabel!;
+            let imageView:UIImageView = self.imageView!;
+            let titleLabel:UILabel = self.titleLabel!;
             
-            let xa = CGFloat(UInt(arc4random_uniform(UInt32(UInt(imageView.frame.size.width) * 5))))// - self.gameView.bounds.size.width * 2
-            
+            //let xa = CGFloat(UInt(arc4random_uniform(UInt32(UInt(imageView.frame.size.width) * 5))))// - self.gameView.bounds.size.width * 2
             
             if (imageView.image != nil && titleLabel.text != nil){
                 lengthOccupied = Float( imageView.frame.size.width + titleLabel.frame.size.width );
@@ -380,9 +369,8 @@ public class RNLoadingButton: UIButton {
             else if ( Float(x + Float(frame.size.width) ) > Float(self.frame.size.width - self.activityIndicatorEdgeInsets.right)){
                 x = Float(self.frame.size.width) - ( Float(frame.size.width) + Float(self.activityIndicatorEdgeInsets.right) );
             }
-            frame.origin.x = CGFloat( x );
-        default:
-            break
+
+            frame.origin.x = CGFloat(x);
         }
         
         return frame;
@@ -390,24 +378,24 @@ public class RNLoadingButton: UIButton {
     
     
     // UIImage clear
-    func clearImage(size:CGSize, scale:CGFloat) ->UIImage {
+    private func clearImage(size:CGSize, scale:CGFloat) ->UIImage {
         UIGraphicsBeginImageContext(size)
-        var context:CGContextRef = UIGraphicsGetCurrentContext();
+        let context:CGContextRef = UIGraphicsGetCurrentContext()!
         UIGraphicsPushContext(context)
         CGContextSetFillColorWithColor(context, UIColor.clearColor().CGColor)
         CGContextFillRect(context, CGRectMake(0, 0, size.width, size.height))
         
         UIGraphicsPopContext()
-        var outputImage:UIImage  = UIGraphicsGetImageFromCurrentImageContext()
+        let outputImage:UIImage  = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        return  UIImage(CGImage: outputImage.CGImage, scale: scale, orientation: UIImageOrientation.Up)!
+        return  UIImage(CGImage: outputImage.CGImage!, scale: scale, orientation: UIImageOrientation.Up)
     }
     
     
     /** Store values */
-    /** Value in Dictionary on ControlState*/
-    func storeValue(value:AnyObject?, onDic:NSMutableDictionary!, state:UIControlState) {
+    /** Value in Dictionary on ControlState */
+    private func storeValue(value:AnyObject?, onDic:NSMutableDictionary!, state:UIControlState) {
         if let _value: AnyObject = value  {
             onDic.setValue(_value, forKey: "\(state.rawValue)")
         }
@@ -418,13 +406,10 @@ public class RNLoadingButton: UIButton {
     }
     
     
-    /** KVO - Key-value Observer */
+    // MARK: - KVO - Key-value Observer
     
-    override public func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>)
-    {
-        println("KeyPath: \(keyPath)")
+    override public func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         configureControlState(currentControlState());
-        
     }
     
 }
