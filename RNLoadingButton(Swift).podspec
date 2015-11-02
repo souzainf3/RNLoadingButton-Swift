@@ -11,9 +11,7 @@ Pod::Spec.new do |s|
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author             = { "Romilson Nunes" => "souzainf3@yahoo.com.br" }
-  # Or just: s.author    = "Romilson Nunes"
-  # s.authors            = { "Romilson Nunes" => "souzainf3@yahoo.com.br" }
-  # s.social_media_url   = "http://twitter.com/souzainf3"
+  s.social_media_url   = "http://twitter.com/souzainf3"
   s.platform     = :ios, "5.0"
   s.source       = { :git => "https://github.com/souzainf3/RNLoadingButton-Swift.git", :tag => "0.0.2" }
 
