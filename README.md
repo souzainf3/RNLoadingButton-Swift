@@ -50,5 +50,5 @@ btn1.setTitle("connecting", forState: UIControlState.Disabled)
 ```
 
 
-##### Apps using this controls (send your to souzainf3@yahoo.com.br )(send you by to souzainf3@yahoo.com.br)
+##### Apps using this controls (send your to souzainf3@yahoo.com.br )
 - [Zee - Personal Finances](https://itunes.apple.com/us/app/id422694086).
