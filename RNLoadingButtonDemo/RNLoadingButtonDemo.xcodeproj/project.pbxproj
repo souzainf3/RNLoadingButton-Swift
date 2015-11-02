@@ -13,7 +13,6 @@
 		005825D71992B600003ED026 /* icon_favorito_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 005825D31992B600003ED026 /* icon_favorito_off@2x.png */; };
 		005825DA1992B7E7003ED026 /* icon_favorito2_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 005825D81992B7E7003ED026 /* icon_favorito2_off.png */; };
 		005825DB1992B7E7003ED026 /* icon_favorito2_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 005825D91992B7E7003ED026 /* icon_favorito2_off@2x.png */; };
-		006B67E51993B6A400E69BF8 /* RNLoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006B67E41993B6A400E69BF8 /* RNLoadingButton.swift */; };
 		00927F25199265790095147A /* btn_background_141x36.png in Resources */ = {isa = PBXBuildFile; fileRef = 00927F23199265790095147A /* btn_background_141x36.png */; };
 		00927F26199265790095147A /* btn_background_141x36@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00927F24199265790095147A /* btn_background_141x36@2x.png */; };
 		00927F291992667D0095147A /* btn_background_290x36.png in Resources */ = {isa = PBXBuildFile; fileRef = 00927F271992667D0095147A /* btn_background_290x36.png */; };
@@ -22,6 +21,7 @@
 		00927F2E199266CD0095147A /* bgd_button_red_136x36@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00927F2C199266CD0095147A /* bgd_button_red_136x36@2x.png */; };
 		00E70A0719927C7400D37E5D /* ViewControllerDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E70A0519927C7400D37E5D /* ViewControllerDemo.swift */; };
 		00E70A0819927C7400D37E5D /* ViewControllerDemo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00E70A0619927C7400D37E5D /* ViewControllerDemo.xib */; };
+		9BFCD69A1BE7C139000182A4 /* RNLoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFCD6991BE7C139000182A4 /* RNLoadingButton.swift */; };
 		AC85DB50194231C200D6D8D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC85DB4F194231C200D6D8D3 /* AppDelegate.swift */; };
 		AC85DB52194231C200D6D8D3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC85DB51194231C200D6D8D3 /* Images.xcassets */; };
 /* End PBXBuildFile section */
@@ -33,7 +33,6 @@
 		005825D31992B600003ED026 /* icon_favorito_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_favorito_off@2x.png"; sourceTree = "<group>"; };
 		005825D81992B7E7003ED026 /* icon_favorito2_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_favorito2_off.png; sourceTree = "<group>"; };
 		005825D91992B7E7003ED026 /* icon_favorito2_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_favorito2_off@2x.png"; sourceTree = "<group>"; };
-		006B67E41993B6A400E69BF8 /* RNLoadingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = RNLoadingButton.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		00927F23199265790095147A /* btn_background_141x36.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_background_141x36.png; sourceTree = "<group>"; };
 		00927F24199265790095147A /* btn_background_141x36@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_background_141x36@2x.png"; sourceTree = "<group>"; };
 		00927F271992667D0095147A /* btn_background_290x36.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_background_290x36.png; sourceTree = "<group>"; };
@@ -42,6 +41,7 @@
 		00927F2C199266CD0095147A /* bgd_button_red_136x36@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgd_button_red_136x36@2x.png"; sourceTree = "<group>"; };
 		00E70A0519927C7400D37E5D /* ViewControllerDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ViewControllerDemo.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		00E70A0619927C7400D37E5D /* ViewControllerDemo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewControllerDemo.xib; sourceTree = "<group>"; };
+		9BFCD6991BE7C139000182A4 /* RNLoadingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNLoadingButton.swift; sourceTree = "<group>"; };
 		AC85DB4A194231C200D6D8D3 /* RNLoadingButtonDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RNLoadingButtonDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC85DB4E194231C200D6D8D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC85DB4F194231C200D6D8D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -59,14 +59,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		006B67E31993B6A400E69BF8 /* RNLoadingButton */ = {
-			isa = PBXGroup;
-			children = (
-				006B67E41993B6A400E69BF8 /* RNLoadingButton.swift */,
-			);
-			path = RNLoadingButton;
-			sourceTree = "<group>";
-		};
 		00927F22199265350095147A /* Imagens */ = {
 			isa = PBXGroup;
 			children = (
@@ -86,10 +78,18 @@
 			path = Imagens;
 			sourceTree = "<group>";
 		};
+		9BFCD6981BE7C139000182A4 /* RNLoadingButton */ = {
+			isa = PBXGroup;
+			children = (
+				9BFCD6991BE7C139000182A4 /* RNLoadingButton.swift */,
+			);
+			name = RNLoadingButton;
+			path = ../../RNLoadingButton;
+			sourceTree = "<group>";
+		};
 		AC85DB41194231C200D6D8D3 = {
 			isa = PBXGroup;
 			children = (
-				006B67E31993B6A400E69BF8 /* RNLoadingButton */,
 				AC85DB4C194231C200D6D8D3 /* RNLoadingButtonDemo */,
 				AC85DB4B194231C200D6D8D3 /* Products */,
 			);
@@ -106,6 +106,7 @@
 		AC85DB4C194231C200D6D8D3 /* RNLoadingButtonDemo */ = {
 			isa = PBXGroup;
 			children = (
+				9BFCD6981BE7C139000182A4 /* RNLoadingButton */,
 				AC85DB4F194231C200D6D8D3 /* AppDelegate.swift */,
 				00E70A0519927C7400D37E5D /* ViewControllerDemo.swift */,
 				00E70A0619927C7400D37E5D /* ViewControllerDemo.xib */,
@@ -206,7 +207,7 @@
 			files = (
 				AC85DB50194231C200D6D8D3 /* AppDelegate.swift in Sources */,
 				00E70A0719927C7400D37E5D /* ViewControllerDemo.swift in Sources */,
-				006B67E51993B6A400E69BF8 /* RNLoadingButton.swift in Sources */,
+				9BFCD69A1BE7C139000182A4 /* RNLoadingButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
