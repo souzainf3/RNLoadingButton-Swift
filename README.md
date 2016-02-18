@@ -26,18 +26,18 @@ You can Also choose the position of easily activity indicator or Set It up with 
 * iOS 8.0+ / Mac OS X 10.9+
 * Xcode 7.0+
 
-## Adding RNLoadingButton(Swift) to your project
+## Adding RNLoadingButton-Swift to your project
 
 #### Cocoapods
 
-1. Add a pod entry for RNActivityView to your Podfile `pod 'RNLoadingButton(Swift)'`
+1. Add a pod entry for RNActivityView to your Podfile `pod 'RNLoadingButton-Swift'`
 2. Install the pod(s) by running `pod install`.
 
 #### Manually
 
 1. Drag RNLoadingButton.swift to your project
 
-## Using RNLoadingButton(Swift)
+## Using RNLoadingButton-Swift
 
 ```swift
 //Mark: Can usage with Nib
