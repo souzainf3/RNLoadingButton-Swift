@@ -1,6 +1,6 @@
-# RNLoadingButton(Swift)
+# RNLoadingButton-Swift
 
-RNLoadingButotn(Swift) is based on [RNLoadingButton](https://github.com/souzainf3/RNLoadingButton) write in Objective-C.
+RNLoadingButotn-Swift is based on [RNLoadingButton](https://github.com/souzainf3/RNLoadingButton) write in Objective-C.
 
 An easy-to-use UIButton subclass with an activity indicator.
 
