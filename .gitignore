@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-# Created by https://www.gitignore.io/api/objective-c,xcode,swift,osx
-
-### Objective-C ###
-=======
 # Created by https://www.gitignore.io/api/xcode,swift,objective-c,osx
 
 ### Xcode ###
->>>>>>> develop
 # Xcode
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
