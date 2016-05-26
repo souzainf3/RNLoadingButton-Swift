@@ -28,6 +28,11 @@ You can Also choose the position of easily activity indicator or Set It up with 
 
 ## Adding RNLoadingButton-Swift to your project
 
+#### Carthage
+
+1. Add `github "souzainf3/RNLoadingButton-Swift" "master"` to your Cartfile
+2. Run `carthage update` to clone & build the framework
+
 #### Cocoapods
 
 1. Add a pod entry for RNActivityView to your Podfile `pod 'RNLoadingButton-Swift'`
