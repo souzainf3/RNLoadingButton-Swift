@@ -368,9 +368,14 @@ public class RNLoadingButton: UIButton {
             }
             else if ( Float(x + Float(frame.size.width) ) > Float(self.frame.size.width - self.activityIndicatorEdgeInsets.right)){
                 x = Float(self.frame.size.width) - ( Float(frame.size.width) + Float(self.activityIndicatorEdgeInsets.right) );
+            } else {
+                // default to placing the indicator at 3/4 the buttons length, making sure it doesn't touch the button content
+                let contentRightEdge = (lengthOccupied / 2) + (Float(frame.width) / 2)
+                let threeFourthsButtonWidth = 3 * (Float(frame.width) / 4)
+                x = max(contentRightEdge, threeFourthsButtonWidth)
             }
 
-            frame.origin.x = CGFloat(x);
+            frame.origin.x = CGFloat(x)
         }
         
         return frame;
