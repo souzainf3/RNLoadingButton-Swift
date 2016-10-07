@@ -316,7 +316,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.romilsonnunes.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = RNLoadingButtonDemo;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -331,7 +331,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.romilsonnunes.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = RNLoadingButtonDemo;
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
