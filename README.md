@@ -12,13 +12,12 @@ You can Also choose the position of easily activity indicator or Set It up with 
 [![](https://raw.githubusercontent.com/souzainf3/RNLoadingButton-Swift/master/RNLoadingButtonDemo/Screens/screen1.png)](https://raw.githubusercontent.com/souzainf3/RNLoadingButton-Swift/master/RNLoadingButtonDemo/Screens/screen1.png)
 [![](https://raw.githubusercontent.com/souzainf3/RNLoadingButton-Swift/master/RNLoadingButtonDemo/Screens/screen2.png)](https://raw.githubusercontent.com/souzainf3/RNLoadingButton-Swift/master/RNLoadingButtonDemo/Screens/screen2.png)
 
-## Features
-- [x] Swift 2
-
-
 ## Support
 - [x] Swift 1.0 (tag 0.0.1)
 - [x] Swift 1.2 (tag 2.0.0)
+- [x] Swift 2.2 (tag 3.0.0)
+- [x] Swift 2.3 (tag 3.2.0)
+
 
 
 ## Requirements
