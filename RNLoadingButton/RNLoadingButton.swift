@@ -193,7 +193,7 @@ public class RNLoadingButton: UIButton {
         self.activityIndicatorView.startAnimating()
         self.addSubview(self.activityIndicatorView)
         
-        let tap = UITapGestureRecognizer(target: self, action: Selector("activityIndicatorTapped:"))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(RNLoadingButton.activityIndicatorTapped(_:)))
         self.activityIndicatorView.addGestureRecognizer(tap)
     }
     
@@ -383,7 +383,7 @@ public class RNLoadingButton: UIButton {
     
     
     // UIImage clear
-    private func clearImage(size:CGSize, scale:CGFloat) ->UIImage {
+    private func clearImage(size:CGSize, scale:CGFloat) -> UIImage {
         UIGraphicsBeginImageContext(size)
         let context:CGContextRef = UIGraphicsGetCurrentContext()!
         UIGraphicsPushContext(context)
@@ -391,7 +391,9 @@ public class RNLoadingButton: UIButton {
         CGContextFillRect(context, CGRectMake(0, 0, size.width, size.height))
         
         UIGraphicsPopContext()
-        let outputImage:UIImage  = UIGraphicsGetImageFromCurrentImageContext()
+        guard let outputImage = UIGraphicsGetImageFromCurrentImageContext() else {
+            return UIImage()
+        }
         UIGraphicsEndImageContext()
         
         return  UIImage(CGImage: outputImage.CGImage!, scale: scale, orientation: UIImageOrientation.Up)
