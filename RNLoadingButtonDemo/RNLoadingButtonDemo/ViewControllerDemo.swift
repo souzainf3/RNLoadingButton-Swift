@@ -47,7 +47,7 @@ class ViewControllerDemo: UIViewController {
     
     func randomAttributes(button:RNLoadingButton) {
         
-        buttonTapAction(button: button)
+        buttonTapAction(button)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             // your function here
@@ -55,7 +55,7 @@ class ViewControllerDemo: UIViewController {
         }
     }
     
-    @IBAction func buttonTapAction(button:RNLoadingButton) {
+    @IBAction func buttonTapAction(_ button:RNLoadingButton) {
         
         button.isLoading = !button.isLoading
         button.activityIndicatorAlignment = RNActivityIndicatorAlignment.center
@@ -64,7 +64,7 @@ class ViewControllerDemo: UIViewController {
     }
     
     
-    @IBAction func doTap(sender: RNLoadingButton) {
+    @IBAction func doTap(_ sender: RNLoadingButton) {
         
         sender.isEnabled = false
         sender.isLoading = true;
