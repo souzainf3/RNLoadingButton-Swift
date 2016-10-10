@@ -13,17 +13,18 @@ You can Also choose the position of easily activity indicator or Set It up with 
 [![](https://raw.githubusercontent.com/souzainf3/RNLoadingButton-Swift/master/RNLoadingButtonDemo/Screens/screen2.png)](https://raw.githubusercontent.com/souzainf3/RNLoadingButton-Swift/master/RNLoadingButtonDemo/Screens/screen2.png)
 
 ## Support
-- [x] Swift 1.0 (tag 0.0.1)
-- [x] Swift 1.2 (tag 2.0.0)
-- [x] Swift 2.2 (tag 3.0.0)
-- [x] Swift 2.3 (tag 3.2.0)
 
+- [x] Swift 3 - Current version (4.x.x)
+- [x] Swift 2.3 (tag 3.2.0)
+- [x] Swift 2.2 (tag 3.0.0)
+- [x] Swift 1.2 (tag 2.0.0)
+- [x] Swift 1.0 (tag 0.0.1)
 
 
 ## Requirements
 
 * iOS 8.0+ / Mac OS X 10.9+
-* Xcode 7.0+
+* Xcode 8.0+, Swift 3
 
 ## Adding RNLoadingButton-Swift to your project
 
@@ -44,13 +45,14 @@ You can Also choose the position of easily activity indicator or Set It up with 
 ## Using RNLoadingButton-Swift
 
 ```swift
-//Mark: Can usage with Nib
+//Mark: Buttons From Nib
 // Configure State
 btn1.hideTextWhenLoading = false
-btn1.loading = false
-btn1.activityIndicatorAlignment = RNActivityIndicatorAlignment.Right
-btn1.activityIndicatorEdgeInsets = UIEdgeInsetsMake(0, 50, 0, 10)
-btn1.setTitle("connecting", forState: UIControlState.Disabled)
+btn1.isLoading = false
+btn1.activityIndicatorAlignment = RNActivityIndicatorAlignment.right
+btn1.activityIndicatorEdgeInsets = UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 10)
+btn1.setTitleColor(UIColor(white: 0.673, alpha: 1.0), for: UIControlState.disabled)
+btn1.setTitle("connecting", for: UIControlState.disabled)
 ```
 
 
