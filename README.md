@@ -33,10 +33,17 @@ You can Also choose the position of easily activity indicator or Set It up with 
 1. Add `github "souzainf3/RNLoadingButton-Swift" "master"` to your Cartfile
 2. Run `carthage update` to clone & build the framework
 
-#### Cocoapods
+#### [CocoaPods](http://cocoapods.org)
 
-1. Add a pod entry for RNActivityView to your Podfile `pod 'RNLoadingButton-Swift'`
-2. Install the pod(s) by running `pod install`.
+1. Add a pod entry for RNActivityView to your Podfile
+```ruby
+# Latest release of RNLoadingButton-Swift
+pod 'RNLoadingButton-Swift'
+```
+2. Install the pod(s) by running
+ ```ruby
+ pod install
+ ```
 
 #### Manually
 
@@ -56,5 +63,5 @@ btn1.setTitle("connecting", for: UIControlState.disabled)
 ```
 
 
-##### Apps using this controls (send your to souzainf3@yahoo.com.br )
+##### Apps using these controls (send yours to souzainf3@yahoo.com.br )
 - [Zee - Personal Finances](https://itunes.apple.com/us/app/id422694086).
