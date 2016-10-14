@@ -40,10 +40,7 @@ You can Also choose the position of easily activity indicator or Set It up with 
 # Latest release of RNLoadingButton-Swift
 pod 'RNLoadingButton-Swift'
 ```
-2. Install the pod(s) by running
- ```ruby
- pod install
- ```
+2. Install the pod(s) by running `pod install`
 
 #### Manually
 
