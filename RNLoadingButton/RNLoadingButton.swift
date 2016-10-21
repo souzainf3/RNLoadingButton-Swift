@@ -25,18 +25,18 @@ open class RNLoadingButton: UIButton {
     /** Loading */
     open var isLoading: Bool = false {
         didSet {
-            configureControl(currentControlState());
+            configureControl(for: currentControlState());
         }
     }
 
     open var hideImageWhenLoading: Bool = true {
         didSet {
-            configureControl(currentControlState());
+            configureControl(for: currentControlState());
         }
     }
     open var hideTextWhenLoading: Bool = true {
         didSet {
-            configureControl(currentControlState());
+            configureControl(for: currentControlState());
         }
     }
     
@@ -214,7 +214,7 @@ open class RNLoadingButton: UIButton {
     
     func setControlState(_ value: AnyObject, dic:NSMutableDictionary, state:UIControlState) {
         dic["\(state.rawValue)"] = value
-        configureControl(currentControlState())
+        configureControl(for: currentControlState())
     }
     
     func setImage(_ image:UIImage, state:UIControlState) {
@@ -269,7 +269,7 @@ open class RNLoadingButton: UIButton {
     }
     
     
-    fileprivate func configureControl(_ state: UIControlState) {
+    fileprivate func configureControl(for state: UIControlState) {
         if self.isLoading {
             self.activityIndicatorView.startAnimating();
            
@@ -277,7 +277,7 @@ open class RNLoadingButton: UIButton {
                 
                 var imgTmp:UIImage? = nil
                 if let img = self.image(for: UIControlState.normal) {
-                    imgTmp = self.clearImage(img.size, scale: img.scale)
+                    imgTmp = self.clearImage(size: img.size, scale: img.scale)
                 }
                 
                 super.setImage(imgTmp, for: UIControlState.normal)
@@ -372,7 +372,7 @@ open class RNLoadingButton: UIButton {
     
     
     // UIImage clear
-    fileprivate func clearImage(_ size: CGSize, scale: CGFloat) -> UIImage {
+    fileprivate func clearImage(size: CGSize, scale: CGFloat) -> UIImage {
         UIGraphicsBeginImageContext(size)
         let context:CGContext = UIGraphicsGetCurrentContext()!
         UIGraphicsPushContext(context)
@@ -397,14 +397,14 @@ open class RNLoadingButton: UIButton {
         else {
             onDic.removeObject(forKey: "\(state.rawValue)")
         }
-        self.configureControl(self.currentControlState())
+        self.configureControl(for: self.currentControlState())
     }
     
     
     // MARK: - KVO - Key-value Observer
     
     override open func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        configureControl(currentControlState());
+        configureControl(for: currentControlState());
     }
     
     
