@@ -171,10 +171,11 @@ open class RNLoadingButton: UIButton {
     
     open func activityIndicatorStyle(for state: UIControlState) -> UIActivityIndicatorViewStyle {
         var style:UIActivityIndicatorViewStyle  = defaultActivityStyle
-        if let styleObj: AnyObject = self.getValueForControlState(self.indicatorStyles, state: state)
+        
+        if let styleNumber = getValueFrom(type: NSNumber.self, on: self.indicatorStyles, for: state)
         {
             // https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/swift_programming_language/Enumerations.html
-            style = UIActivityIndicatorViewStyle(rawValue: (styleObj as! NSNumber).intValue)!
+            style = UIActivityIndicatorViewStyle(rawValue: styleNumber.intValue)!
         }
         return style
     }
@@ -233,7 +234,7 @@ open class RNLoadingButton: UIButton {
     }
     
     override open func title(for state: UIControlState) -> String?  {
-        return self.getValueForControlState(self.texts, state: state) as? String
+        return getValueFrom(type: String.self, on: self.texts, for: state)
     }
     
     override open func setImage(_ image: UIImage!, for state: UIControlState) {
@@ -245,7 +246,7 @@ open class RNLoadingButton: UIButton {
     }
     
     override open func image(for state: UIControlState) -> UIImage? {
-        return self.getValueForControlState(self.imagens, state: state) as? UIImage
+        return getValueFrom(type: UIImage.self, on: self.imagens, for: state)
     }
     
     
@@ -259,15 +260,16 @@ open class RNLoadingButton: UIButton {
         self.removeObserver(self, forKeyPath: keyPath)
     }
     
-    fileprivate func getValueForControlState(_ dic: NSMutableDictionary!, state:UIControlState) -> AnyObject? {
-
-        if let value =  dic.value(forKey: "\(state.rawValue)") as AnyObject? {
-            return value
-        }
-
-        return dic.value(forKey: "\(UIControlState.normal.rawValue)") as AnyObject? // dic["\(UIControlState.normal.rawValue)"];
-    }
     
+    fileprivate func getValueFrom<T>(type: T.Type, on dic: NSMutableDictionary!, for state: UIControlState) -> T? {
+        
+        if let value =  dic.value(forKey: "\(state.rawValue)") as AnyObject? {
+            return value as? T
+        }
+        
+        return dic.value(forKey: "\(UIControlState.normal.rawValue)") as? T
+        
+    }
     
     fileprivate func configureControl(for state: UIControlState) {
         if self.isLoading {
