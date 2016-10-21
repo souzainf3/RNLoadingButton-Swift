@@ -87,30 +87,30 @@ open class RNLoadingButton: UIButton {
         
         // Images - Icons
         if (super.image(for: UIControlState.normal) != nil) {
-            self.store(super.image(for: UIControlState.normal), onDic: imagens, state: UIControlState.normal)
+            self.store(super.image(for: UIControlState.normal), in: imagens, for: .normal)
         }
         if (super.image(for: UIControlState.highlighted) != nil) {
-            self.store(super.image(for: UIControlState.highlighted), onDic: imagens, state: UIControlState.highlighted)
+            self.store(super.image(for: UIControlState.highlighted), in: imagens, for: .highlighted)
         }
         if (super.image(for: UIControlState.disabled) != nil) {
-            self.store(super.image(for: UIControlState.disabled), onDic: imagens, state: UIControlState.disabled)
+            self.store(super.image(for: UIControlState.disabled), in: imagens, for: .disabled)
         }
         if (super.image(for: UIControlState.selected) != nil) {
-            self.store(super.image(for: UIControlState.selected), onDic: imagens, state: UIControlState.selected)
+            self.store(super.image(for: UIControlState.selected), in: imagens, for: .selected)
         }
         
         // Title - Texts
         if let titleNormal = super.title(for: .normal) {
-            self.store(titleNormal as AnyObject?, onDic: texts, state: .normal)
+            self.store(titleNormal, in: texts, for: .normal)
         }
         if let titleHighlighted = super.title(for: .highlighted) {
-            self.store(titleHighlighted as AnyObject?, onDic: texts, state: .highlighted)
+            self.store(titleHighlighted, in: texts, for: .highlighted)
         }
         if let titleDisabled = super.title(for: .disabled) {
-            self.store(titleDisabled as AnyObject?, onDic: texts, state: .disabled)
+            self.store(titleDisabled, in: texts, for: .disabled)
         }
         if let titleSelected = super.title(for: .selected) {
-            self.store(titleSelected as AnyObject?, onDic: texts, state: .selected)
+            self.store(titleSelected, in: texts, for: .selected)
         }
         
     }
@@ -226,7 +226,7 @@ open class RNLoadingButton: UIButton {
     // MARK: - Override Setters & Getters
    
     override open func setTitle(_ title: String!, for state: UIControlState) {
-        self.store(title as AnyObject?, onDic: self.texts, state: state)
+        self.store(title, in: self.texts, for: state)
         if super.title(for: state) != title {
             super.setTitle(title, for: state)
         }
@@ -238,7 +238,7 @@ open class RNLoadingButton: UIButton {
     }
     
     override open func setImage(_ image: UIImage!, for state: UIControlState) {
-        self.store(image, onDic: self.imagens, state: state)
+        self.store(image, in: self.imagens, for: state)
         if super.image(for: state) != image {
             super.setImage(image, for: state)
         }
@@ -258,17 +258,6 @@ open class RNLoadingButton: UIButton {
     
     fileprivate func removeObserver(forKeyPath keyPath: String!) {
         self.removeObserver(self, forKeyPath: keyPath)
-    }
-    
-    
-    fileprivate func getValueFrom<T>(type: T.Type, on dic: NSMutableDictionary!, for state: UIControlState) -> T? {
-        
-        if let value =  dic.value(forKey: "\(state.rawValue)") as AnyObject? {
-            return value as? T
-        }
-        
-        return dic.value(forKey: "\(UIControlState.normal.rawValue)") as? T
-        
     }
     
     fileprivate func configureControl(for state: UIControlState) {
@@ -390,14 +379,25 @@ open class RNLoadingButton: UIButton {
         return  UIImage(cgImage: outputImage.cgImage!, scale: scale, orientation: UIImageOrientation.up)
     }
     
-    /** Store values */
-    /** Value in Dictionary on ControlState */
-    fileprivate func store(_ value:AnyObject?, onDic:NSMutableDictionary!, state:UIControlState) {
-        if let _value: AnyObject = value  {
-            onDic.setValue(_value, forKey: "\(state.rawValue)")
+
+    /** Store and recorver values */
+    /** Value in Dictionary for ControlState */
+
+    fileprivate func getValueFrom<T>(type: T.Type, on dic: NSMutableDictionary!, for state: UIControlState) -> T? {
+        
+        if let value =  dic.value(forKey: "\(state.rawValue)") as AnyObject? {
+            return value as? T
+        }
+        
+        return dic.value(forKey: "\(UIControlState.normal.rawValue)") as? T
+    }
+    
+    fileprivate func store<T>(_ value: T?, in dic:NSMutableDictionary!, for state:UIControlState) {
+        if let _value = value as AnyObject?  {
+            dic.setValue(_value, forKey: "\(state.rawValue)")
         }
         else {
-            onDic.removeObject(forKey: "\(state.rawValue)")
+            dic.removeObject(forKey: "\(state.rawValue)")
         }
         self.configureControl(for: self.currentControlState())
     }
