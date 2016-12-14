@@ -5,7 +5,6 @@
 //  Created by Romilson Nunes on 06/06/14.
 //  Copyright (c) 2014 Romilson Nunes. All rights reserved.
 //
-
 import UIKit
 public enum RNActivityIndicatorAlignment: Int {
     case left
@@ -25,18 +24,18 @@ open class RNLoadingButton: UIButton {
     /** Loading */
     open var isLoading: Bool = false {
         didSet {
-            configureControl(for: currentControlState());
+            configureControl(for: currentControlState())
         }
     }
-
+    
     open var hideImageWhenLoading: Bool = true {
         didSet {
-            configureControl(for: currentControlState());
+            configureControl(for: currentControlState())
         }
     }
     open var hideTextWhenLoading: Bool = true {
         didSet {
-            configureControl(for: currentControlState());
+            configureControl(for: currentControlState())
         }
     }
     
@@ -58,7 +57,7 @@ open class RNLoadingButton: UIButton {
     
     // Static
     let defaultActivityStyle = UIActivityIndicatorViewStyle.gray
-
+    
     
     // MARK: - Initializers
     
@@ -113,6 +112,21 @@ open class RNLoadingButton: UIButton {
             self.store(titleSelected, in: texts, for: .selected)
         }
         
+        
+        // Attributed Title - Texts
+        if let attributedTitleNormal = super.attributedTitle(for: .normal){
+            self.store(attributedTitleNormal, in: texts, for: .normal)
+        }
+        if let attributedTitleHilighted = super.attributedTitle(for: .highlighted){
+            self.store(attributedTitleHilighted, in: texts, for: .highlighted)
+        }
+        if let attributedTitleSelected = super.attributedTitle(for: .selected){
+            self.store(attributedTitleSelected, in: texts, for: .selected)
+        }
+        if let attributedTitleDisabled = super.attributedTitle(for: .disabled){
+            self.store(attributedTitleDisabled, in: texts, for: .disabled)
+        }
+        
     }
     
     fileprivate func commonInit() {
@@ -124,6 +138,12 @@ open class RNLoadingButton: UIButton {
         self.texts.setValue(super.title(for: .highlighted), forKey: "\(UIControlState.highlighted.rawValue)")
         self.texts.setValue(super.title(for: .disabled), forKey: "\(UIControlState.disabled.rawValue)")
         self.texts.setValue(super.title(for: .selected), forKey: "\(UIControlState.selected.rawValue)")
+        
+        /** Attributed Title for States */
+        self.texts.setValue(super.attributedTitle(for: .normal), forKey: "\(UIControlState.normal.rawValue)")
+        self.texts.setValue(super.attributedTitle(for: .highlighted), forKey: "\(UIControlState.highlighted.rawValue)")
+        self.texts.setValue(super.attributedTitle(for: .disabled), forKey: "\(UIControlState.disabled.rawValue)")
+        self.texts.setValue(super.attributedTitle(for: .selected), forKey: "\(UIControlState.selected.rawValue)")
         
         /** Images for States */
         self.imagens.setValue(super.image(for: .normal), forKey: "\(UIControlState.normal.rawValue)")
@@ -158,15 +178,15 @@ open class RNLoadingButton: UIButton {
     // MARK: - Public Methods
     
     open func setActivityIndicatorStyle(_ style:UIActivityIndicatorViewStyle, for state:UIControlState) {
-        let s:NSNumber = NSNumber(value: style.rawValue);
+        let s:NSNumber = NSNumber(value: style.rawValue)
         setControlState(s, dic: indicatorStyles, state: state)
         self.setNeedsLayout()
     }
     
     // Activity Indicator Alignment
     open func setActivityIndicatorAlignment(_ alignment: RNActivityIndicatorAlignment) {
-        activityIndicatorAlignment = alignment;
-        self.setNeedsLayout();
+        activityIndicatorAlignment = alignment
+        self.setNeedsLayout()
     }
     
     open func activityIndicatorStyle(for state: UIControlState) -> UIActivityIndicatorViewStyle {
@@ -222,9 +242,9 @@ open class RNLoadingButton: UIButton {
         setControlState(image, dic: self.imagens, state: state)
     }
     
-
+    
     // MARK: - Override Setters & Getters
-   
+    
     override open func setTitle(_ title: String!, for state: UIControlState) {
         self.store(title, in: self.texts, for: state)
         if super.title(for: state) != title {
@@ -233,10 +253,20 @@ open class RNLoadingButton: UIButton {
         self.setNeedsLayout()
     }
     
+    open override func setAttributedTitle(_ title: NSAttributedString?, for state: UIControlState) {
+        self.store(title, in: self.texts, for: state)
+        if super.attributedTitle(for: state) != title {
+            super.setAttributedTitle(title, for: state)
+        }
+        self.setNeedsLayout()
+    }
     override open func title(for state: UIControlState) -> String?  {
         return getValueFrom(type: String.self, on: self.texts, for: state)
     }
     
+    open override func attributedTitle(for state: UIControlState) -> NSAttributedString? {
+        return getValueFrom(type: NSAttributedString.self, on: self.texts, for: state)
+    }
     override open func setImage(_ image: UIImage!, for state: UIControlState) {
         self.store(image, in: self.imagens, for: state)
         if super.image(for: state) != image {
@@ -262,8 +292,8 @@ open class RNLoadingButton: UIButton {
     
     fileprivate func configureControl(for state: UIControlState) {
         if self.isLoading {
-            self.activityIndicatorView.startAnimating();
-           
+            self.activityIndicatorView.startAnimating()
+            
             if self.hideImageWhenLoading {
                 
                 var imgTmp:UIImage? = nil
@@ -283,18 +313,21 @@ open class RNLoadingButton: UIButton {
             
             if (self.hideTextWhenLoading) {
                 super.setTitle(nil, for: state)
+                super.setAttributedTitle(nil, for: state)
                 super.titleLabel?.text = nil
             } else {
                 super.setTitle( self.title(for: state) , for: state)
                 super.titleLabel?.text = self.title(for: state)
+                super.setAttributedTitle(self.attributedTitle(for: state), for: state)
             }
             
         } else {
-            self.activityIndicatorView.stopAnimating();
+            self.activityIndicatorView.stopAnimating()
             super.setImage(self.image(for: state), for: state)
             super.imageView?.image = self.image(for: state)
             super.setTitle(self.title(for: state), for: state)
             super.titleLabel?.text = self.title(for: state)
+            super.setAttributedTitle(self.attributedTitle(for: state), for: state)
         }
         
         self.setNeedsLayout()
@@ -302,30 +335,30 @@ open class RNLoadingButton: UIButton {
     
     fileprivate func frameForActivityIndicator() -> CGRect {
         
-        var frame:CGRect = CGRect.zero;
-        frame.size = self.activityIndicatorView.frame.size;
-        frame.origin.y = (self.frame.size.height - frame.size.height) / 2;
+        var frame:CGRect = CGRect.zero
+        frame.size = self.activityIndicatorView.frame.size
+        frame.origin.y = (self.frame.size.height - frame.size.height) / 2
         
         switch self.activityIndicatorAlignment {
             
         case .left:
             // top,  left bottom right
-            frame.origin.x += self.activityIndicatorEdgeInsets.left;
-            frame.origin.y += self.activityIndicatorEdgeInsets.top;
-        
+            frame.origin.x += self.activityIndicatorEdgeInsets.left
+            frame.origin.y += self.activityIndicatorEdgeInsets.top
+            
         case .center:
-            frame.origin.x = (self.frame.size.width - frame.size.width) / 2;
-       
+            frame.origin.x = (self.frame.size.width - frame.size.width) / 2
+            
         case .right:
-            var lengthOccupied:CFloat = 0;
-            var x:CFloat = 0;
-            let imageView:UIImageView = self.imageView!;
-            let titleLabel:UILabel = self.titleLabel!;
+            var lengthOccupied:CFloat = 0
+            var x:CFloat = 0
+            let imageView:UIImageView = self.imageView!
+            let titleLabel:UILabel = self.titleLabel!
             
             //let xa = CGFloat(UInt(arc4random_uniform(UInt32(UInt(imageView.frame.size.width) * 5))))// - self.gameView.bounds.size.width * 2
             
             if (imageView.image != nil && titleLabel.text != nil){
-                lengthOccupied = Float( imageView.frame.size.width + titleLabel.frame.size.width );
+                lengthOccupied = Float( imageView.frame.size.width + titleLabel.frame.size.width )
                 
                 
                 if (imageView.frame.origin.x > titleLabel.frame.origin.x){
@@ -340,25 +373,28 @@ open class RNLoadingButton: UIButton {
             }
             else if (titleLabel.text != nil){
                 lengthOccupied = Float( titleLabel.frame.size.width + imageView.frame.origin.x )
+            }else if (attributedTitle(for: currentControlState()) != nil){
+                let attributedString = attributedTitle(for: currentControlState())
+                lengthOccupied = Float(attributedString!.size().width)
             }
             
             x =  Float(lengthOccupied) + Float( self.activityIndicatorEdgeInsets.left )
             if ( Float(x) + Float(frame.size.width) > Float(self.frame.size.width) ){
-                x = Float(self.frame.size.width) - Float(frame.size.width + self.activityIndicatorEdgeInsets.right);
+                x = Float(self.frame.size.width) - Float(frame.size.width + self.activityIndicatorEdgeInsets.right)
             }
             else if ( Float(x + Float(frame.size.width) ) > Float(self.frame.size.width - self.activityIndicatorEdgeInsets.right)){
-                x = Float(self.frame.size.width) - ( Float(frame.size.width) + Float(self.activityIndicatorEdgeInsets.right) );
+                x = Float(self.frame.size.width) - ( Float(frame.size.width) + Float(self.activityIndicatorEdgeInsets.right) )
             } else {
                 // default to placing the indicator at 3/4 the buttons length, making sure it doesn't touch the button content
                 let contentRightEdge = (lengthOccupied / 2) + (Float(frame.width) / 2)
                 let threeFourthsButtonWidth = 3 * (Float(frame.width) / 4)
                 x = max(contentRightEdge, threeFourthsButtonWidth)
             }
-
+            
             frame.origin.x = CGFloat(x)
         }
         
-        return frame;
+        return frame
     }
     
     
@@ -379,10 +415,10 @@ open class RNLoadingButton: UIButton {
         return  UIImage(cgImage: outputImage.cgImage!, scale: scale, orientation: UIImageOrientation.up)
     }
     
-
+    
     /** Store and recorver values */
     /** Value in Dictionary for ControlState */
-
+    
     fileprivate func getValueFrom<T>(type: T.Type, on dic: NSMutableDictionary!, for state: UIControlState) -> T? {
         
         if let value =  dic.value(forKey: "\(state.rawValue)") as AnyObject? {
@@ -406,9 +442,8 @@ open class RNLoadingButton: UIButton {
     // MARK: - KVO - Key-value Observer
     
     override open func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        configureControl(for: currentControlState());
+        configureControl(for: currentControlState())
     }
     
     
 }
-
