@@ -21,6 +21,7 @@
 		00927F2E199266CD0095147A /* bgd_button_red_136x36@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00927F2C199266CD0095147A /* bgd_button_red_136x36@2x.png */; };
 		00E70A0719927C7400D37E5D /* ViewControllerDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E70A0519927C7400D37E5D /* ViewControllerDemo.swift */; };
 		00E70A0819927C7400D37E5D /* ViewControllerDemo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00E70A0619927C7400D37E5D /* ViewControllerDemo.xib */; };
+		038AFAE31E01A9AE005579FC /* CHANGELOG.md in Sources */ = {isa = PBXBuildFile; fileRef = 038AFAE21E01A9AE005579FC /* CHANGELOG.md */; };
 		9BFCD69A1BE7C139000182A4 /* RNLoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFCD6991BE7C139000182A4 /* RNLoadingButton.swift */; };
 		AC85DB50194231C200D6D8D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC85DB4F194231C200D6D8D3 /* AppDelegate.swift */; };
 		AC85DB52194231C200D6D8D3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC85DB51194231C200D6D8D3 /* Images.xcassets */; };
@@ -41,6 +42,7 @@
 		00927F2C199266CD0095147A /* bgd_button_red_136x36@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgd_button_red_136x36@2x.png"; sourceTree = "<group>"; };
 		00E70A0519927C7400D37E5D /* ViewControllerDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ViewControllerDemo.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		00E70A0619927C7400D37E5D /* ViewControllerDemo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewControllerDemo.xib; sourceTree = "<group>"; };
+		038AFAE21E01A9AE005579FC /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		9BFCD6991BE7C139000182A4 /* RNLoadingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNLoadingButton.swift; sourceTree = "<group>"; };
 		AC85DB4A194231C200D6D8D3 /* RNLoadingButtonDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RNLoadingButtonDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC85DB4E194231C200D6D8D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 		AC85DB4D194231C200D6D8D3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				038AFAE21E01A9AE005579FC /* CHANGELOG.md */,
 				00927F22199265350095147A /* Imagens */,
 				AC85DB4E194231C200D6D8D3 /* Info.plist */,
 			);
@@ -211,6 +214,7 @@
 				AC85DB50194231C200D6D8D3 /* AppDelegate.swift in Sources */,
 				00E70A0719927C7400D37E5D /* ViewControllerDemo.swift in Sources */,
 				9BFCD69A1BE7C139000182A4 /* RNLoadingButton.swift in Sources */,
+				038AFAE31E01A9AE005579FC /* CHANGELOG.md in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
