@@ -34,13 +34,13 @@ class ViewControllerDemo: UIViewController {
         btn1.setTitleColor(UIColor(white: 0.673, alpha: 1.0), for: UIControlState.disabled)
         btn1.setTitle("connecting           ", for: UIControlState.disabled)
         btn1.activityIndicatorView.color = .red
-        btn1.setActivityIndicatorColor(.red)
+        btn1.activityIndicatorColor = .red
         
         
         btn2.hideTextWhenLoading = false
         btn2.isLoading = false
         btn2.activityIndicatorAlignment = RNActivityIndicatorAlignment.left
-        btn2.setActivityIndicatorStyle(UIActivityIndicatorViewStyle.gray, for: UIControlState.disabled)
+        btn2.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
         btn2.activityIndicatorEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0)
         btn2.setTitle("Loading", for: UIControlState.disabled)
 

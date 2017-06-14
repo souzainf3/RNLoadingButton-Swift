@@ -39,25 +39,38 @@ open class RNLoadingButton: UIButton {
         }
     }
     
+    open let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+
     open var activityIndicatorEdgeInsets: UIEdgeInsets = UIEdgeInsets.zero
     
-    /** Loading Alingment */
+    /// Activity Indicator Alingment
     open var activityIndicatorAlignment = RNActivityIndicatorAlignment.center {
         didSet {
             self.setNeedsLayout()
         }
     }
     
-    open let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+    /// UIActivityIndicatorViewStyle to activityIndicatorView. Default is '.gray'
+    open var activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray {
+        didSet {
+            self.setNeedsLayout()
+        }
+    }
+    
+    /// Color to activityIndicatorView. Default is 'nil'
+    open var activityIndicatorColor: UIColor? {
+        didSet {
+            self.setNeedsLayout()
+        }
+    }
+
     
     // Internal properties
     let imagens = NSMutableDictionary()
     let texts = NSMutableDictionary()
     let indicatorStyles = NSMutableDictionary()
-    private var activityIndicatorColor: UIColor?
     
     // Static
-    let defaultActivityStyle = UIActivityIndicatorViewStyle.gray
     
     
     // MARK: - Initializers
@@ -85,49 +98,27 @@ open class RNLoadingButton: UIButton {
         
         setupActivityIndicator()
         
-        // Images - Icons
-        if (super.image(for: UIControlState.normal) != nil) {
-            self.store(super.image(for: UIControlState.normal), in: imagens, for: .normal)
-        }
-        if (super.image(for: UIControlState.highlighted) != nil) {
-            self.store(super.image(for: UIControlState.highlighted), in: imagens, for: .highlighted)
-        }
-        if (super.image(for: UIControlState.disabled) != nil) {
-            self.store(super.image(for: UIControlState.disabled), in: imagens, for: .disabled)
-        }
-        if (super.image(for: UIControlState.selected) != nil) {
-            self.store(super.image(for: UIControlState.selected), in: imagens, for: .selected)
-        }
+        let states: [UIControlState] = [.normal, .highlighted, .disabled, .selected]
         
-        // Title - Texts
-        if let titleNormal = super.title(for: .normal) {
-            self.store(titleNormal, in: texts, for: .normal)
-        }
-        if let titleHighlighted = super.title(for: .highlighted) {
-            self.store(titleHighlighted, in: texts, for: .highlighted)
-        }
-        if let titleDisabled = super.title(for: .disabled) {
-            self.store(titleDisabled, in: texts, for: .disabled)
-        }
-        if let titleSelected = super.title(for: .selected) {
-            self.store(titleSelected, in: texts, for: .selected)
-        }
-        
-        
-        // Attributed Title - Texts
-        if let attributedTitleNormal = super.attributedTitle(for: .normal){
-            self.store(attributedTitleNormal, in: texts, for: .normal)
-        }
-        if let attributedTitleHilighted = super.attributedTitle(for: .highlighted){
-            self.store(attributedTitleHilighted, in: texts, for: .highlighted)
-        }
-        if let attributedTitleSelected = super.attributedTitle(for: .selected){
-            self.store(attributedTitleSelected, in: texts, for: .selected)
-        }
-        if let attributedTitleDisabled = super.attributedTitle(for: .disabled){
-            self.store(attributedTitleDisabled, in: texts, for: .disabled)
-        }
-        
+        /// Store default values
+        _ = states.map({
+            
+            // Images - Icons
+            if let imageForState = super.image(for: $0) {
+                self.store(imageForState, in: imagens, for: $0)
+            }
+            
+            // Title - Texts
+            if let titleForState = super.title(for: $0) {
+                self.store(titleForState, in: texts, for: $0)
+            }
+            
+            // Attributed Title - Texts
+            if let attributedTitle = super.attributedTitle(for: $0) {
+                self.store(attributedTitle, in: texts, for: $0)
+            }
+            
+        })
     }
     
     fileprivate func commonInit() {
@@ -152,16 +143,25 @@ open class RNLoadingButton: UIButton {
         self.imagens.setValue(super.image(for: .disabled), forKey: "\(UIControlState.disabled.rawValue)")
         self.imagens.setValue(super.image(for: .selected), forKey: "\(UIControlState.selected.rawValue)")
         
-        /** Indicator Styles for States */
-        let s = NSNumber(value: defaultActivityStyle.rawValue)
-        self.indicatorStyles.setValue(s, forKey: "\(UIControlState.normal.rawValue)")
-        self.indicatorStyles.setValue(s, forKey: "\(UIControlState.highlighted.rawValue)")
-        self.indicatorStyles.setValue(s, forKey: "\(UIControlState.disabled.rawValue)")
-        self.indicatorStyles.setValue(s, forKey: "\(UIControlState.selected.rawValue)")
-        
         self.addObserver(forKeyPath: "self.state")
         self.addObserver(forKeyPath: "self.selected")
         self.addObserver(forKeyPath: "self.highlighted")
+    }
+    
+    /// Store default values
+    fileprivate func storeDefaultValues() {
+        let states: [UIControlState] = [.normal, .highlighted, .disabled, .selected]
+        
+        _ = states.map({
+            /** Images for States */
+            self.store(super.image(for: $0), in: imagens, for: $0)
+            
+            /** Title for States */
+            self.store(super.title(for: $0), in: texts, for: $0)
+            
+            /** Attributed Title for States */
+            self.store(super.attributedTitle(for: $0), in: texts, for: $0)
+        })
     }
     
     
@@ -170,45 +170,12 @@ open class RNLoadingButton: UIButton {
     override open func layoutSubviews() {
         super.layoutSubviews()
         
-        let style = self.activityIndicatorStyle(for: self.currentControlState())
-        self.activityIndicatorView.activityIndicatorViewStyle = style
+        self.activityIndicatorView.activityIndicatorViewStyle = self.activityIndicatorViewStyle
         self.activityIndicatorView.color = self.activityIndicatorColor
         self.activityIndicatorView.frame = self.frameForActivityIndicator()
         self.bringSubview(toFront: self.activityIndicatorView)
     }
-    
-    
-    // MARK: - Public Methods
-    
-    open func setActivityIndicatorStyle(_ style:UIActivityIndicatorViewStyle, for state:UIControlState) {
-        let s:NSNumber = NSNumber(value: style.rawValue)
-        setControlState(s, dic: indicatorStyles, state: state)
-        self.setNeedsLayout()
-    }
-    
-    // Activity Indicator Color
-    open func setActivityIndicatorColor(_ color: UIColor) {
-        self.activityIndicatorColor = color
-        self.setNeedsLayout()
-    }
-    
-    // Activity Indicator Alignment
-    open func setActivityIndicatorAlignment(_ alignment: RNActivityIndicatorAlignment) {
-        activityIndicatorAlignment = alignment
-        self.setNeedsLayout()
-    }
-    
-    open func activityIndicatorStyle(for state: UIControlState) -> UIActivityIndicatorViewStyle {
-        var style: UIActivityIndicatorViewStyle  = defaultActivityStyle
-        
-        if let styleNumber = getValueFrom(type: NSNumber.self, on: self.indicatorStyles, for: state)
-        {
-            // https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/swift_programming_language/Enumerations.html
-            style = UIActivityIndicatorViewStyle(rawValue: styleNumber.intValue)!
-        }
-        return style
-    }
-    
+
     
     // MARK: - Targets/Actions
     
