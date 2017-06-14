@@ -199,7 +199,7 @@ open class RNLoadingButton: UIButton {
     }
     
     open func activityIndicatorStyle(for state: UIControlState) -> UIActivityIndicatorViewStyle {
-        var style:UIActivityIndicatorViewStyle  = defaultActivityStyle
+        var style: UIActivityIndicatorViewStyle  = defaultActivityStyle
         
         if let styleNumber = getValueFrom(type: NSNumber.self, on: self.indicatorStyles, for: state)
         {
@@ -307,7 +307,7 @@ open class RNLoadingButton: UIButton {
                 
                 var imgTmp:UIImage? = nil
                 if let img = self.image(for: UIControlState.normal) {
-                    imgTmp = self.clearImage(size: img.size, scale: img.scale)
+                    imgTmp = UIImage.clearImage(size: img.size, scale: img.scale)
                 }
                 
                 super.setImage(imgTmp, for: UIControlState.normal)
@@ -406,27 +406,8 @@ open class RNLoadingButton: UIButton {
         return frame
     }
     
-    
-    // UIImage clear
-    fileprivate func clearImage(size: CGSize, scale: CGFloat) -> UIImage {
-        UIGraphicsBeginImageContext(size)
-        let context:CGContext = UIGraphicsGetCurrentContext()!
-        UIGraphicsPushContext(context)
-        context.setFillColor(UIColor.clear.cgColor)
-        context.fill(CGRect(x: 0, y: 0, width: size.width, height: size.height))
-        
-        UIGraphicsPopContext()
-        guard let outputImage = UIGraphicsGetImageFromCurrentImageContext() else {
-            return UIImage()
-        }
-        UIGraphicsEndImageContext()
-        
-        return  UIImage(cgImage: outputImage.cgImage!, scale: scale, orientation: UIImageOrientation.up)
-    }
-    
-    
-    /** Store and recorver values */
-    /** Value in Dictionary for ControlState */
+    // MARK: -  Store and recorver values
+    /** Value in Dictionary for control State */
     
     fileprivate func getValueFrom<T>(type: T.Type, on dic: NSMutableDictionary!, for state: UIControlState) -> T? {
         
@@ -456,3 +437,24 @@ open class RNLoadingButton: UIButton {
     
 }
 
+
+// MARK: - UIImage 
+
+fileprivate extension UIImage {
+    // UIImage clear
+    static func clearImage(size: CGSize, scale: CGFloat) -> UIImage {
+        UIGraphicsBeginImageContext(size)
+        let context:CGContext = UIGraphicsGetCurrentContext()!
+        UIGraphicsPushContext(context)
+        context.setFillColor(UIColor.clear.cgColor)
+        context.fill(CGRect(x: 0, y: 0, width: size.width, height: size.height))
+        
+        UIGraphicsPopContext()
+        guard let outputImage = UIGraphicsGetImageFromCurrentImageContext() else {
+            return UIImage()
+        }
+        UIGraphicsEndImageContext()
+        
+        return  UIImage(cgImage: outputImage.cgImage!, scale: scale, orientation: UIImageOrientation.up)
+    }
+}
