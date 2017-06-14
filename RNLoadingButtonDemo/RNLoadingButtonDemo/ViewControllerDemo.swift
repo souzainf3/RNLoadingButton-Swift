@@ -33,6 +33,8 @@ class ViewControllerDemo: UIViewController {
         btn1.activityIndicatorEdgeInsets = UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 10)
         btn1.setTitleColor(UIColor(white: 0.673, alpha: 1.0), for: UIControlState.disabled)
         btn1.setTitle("connecting           ", for: UIControlState.disabled)
+        btn1.activityIndicatorView.color = .red
+        btn1.setActivityIndicatorColor(.red)
         
         
         btn2.hideTextWhenLoading = false

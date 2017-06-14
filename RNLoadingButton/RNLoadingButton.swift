@@ -54,6 +54,7 @@ open class RNLoadingButton: UIButton {
     let imagens = NSMutableDictionary()
     let texts = NSMutableDictionary()
     let indicatorStyles = NSMutableDictionary()
+    private var activityIndicatorColor: UIColor?
     
     // Static
     let defaultActivityStyle = UIActivityIndicatorViewStyle.gray
@@ -171,15 +172,23 @@ open class RNLoadingButton: UIButton {
         
         let style = self.activityIndicatorStyle(for: self.currentControlState())
         self.activityIndicatorView.activityIndicatorViewStyle = style
+        self.activityIndicatorView.color = self.activityIndicatorColor
         self.activityIndicatorView.frame = self.frameForActivityIndicator()
         self.bringSubview(toFront: self.activityIndicatorView)
     }
+    
     
     // MARK: - Public Methods
     
     open func setActivityIndicatorStyle(_ style:UIActivityIndicatorViewStyle, for state:UIControlState) {
         let s:NSNumber = NSNumber(value: style.rawValue)
         setControlState(s, dic: indicatorStyles, state: state)
+        self.setNeedsLayout()
+    }
+    
+    // Activity Indicator Color
+    open func setActivityIndicatorColor(_ color: UIColor) {
+        self.activityIndicatorColor = color
         self.setNeedsLayout()
     }
     
@@ -445,5 +454,5 @@ open class RNLoadingButton: UIButton {
         configureControl(for: currentControlState())
     }
     
-    
 }
+
