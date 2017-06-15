@@ -1,5 +1,9 @@
 # RNLoadingButton-Swift - CHANGELOG
 
+## 4.1.0
+• Color for activity indicator
+• Code refactored
+
 ## 4.0.1
 • Fix swift 3.0 class access modifier
 
