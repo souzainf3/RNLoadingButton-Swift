@@ -86,6 +86,15 @@ activityIndicatorEdgeInsets: UIEdgeInsets
 activityIndicatorAlignment: RNActivityIndicatorAlignment
 ```
 
+* Activity Indicator style. Default is '.gray'
+```swift
+activityIndicatorViewStyle: UIActivityIndicatorViewStyle
+```
+
+* Color to activityIndicatorView. Default is 'nil'
+```swift
+activityIndicatorColor: UIColor
+```
 
 
 ##### Apps using this control (send your to souzainf3@yahoo.com.br )
