@@ -44,6 +44,8 @@ You can Also choose the position of easily activity indicator or Set It up with 
 
 ## Using RNLoadingButton-Swift
 
+`RNLoadingView` is available in Interface Builder
+
 ```swift
 //Mark: Buttons From Nib
 // Configure State
@@ -53,7 +55,37 @@ btn1.activityIndicatorAlignment = RNActivityIndicatorAlignment.right
 btn1.activityIndicatorEdgeInsets = UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 10)
 btn1.setTitleColor(UIColor(white: 0.673, alpha: 1.0), for: UIControlState.disabled)
 btn1.setTitle("connecting", for: UIControlState.disabled)
+btn1.activityIndicatorColor = .blue // Change the activity indicator color
 ```
+
+
+### Properties
+
+* Loading state
+```swift
+isLoading: Bool
+```
+
+* Hide image when loading is visible
+```swift
+hideImageWhenLoading: Bool
+```
+
+* Hide text when loading is visible
+```swift
+hideTextWhenLoading: Bool
+```
+
+* Edge Insets to set activity indicator frame. Default is .zero
+```swift
+activityIndicatorEdgeInsets: UIEdgeInsets
+```
+
+* Activity Indicator Alingment. Default is '.center'
+```swift
+activityIndicatorAlignment: RNActivityIndicatorAlignment
+```
+
 
 
 ##### Apps using this control (send your to souzainf3@yahoo.com.br )

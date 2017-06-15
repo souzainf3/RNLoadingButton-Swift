@@ -51,7 +51,7 @@ open class RNLoadingButton: UIButton {
     /// Edge Insets to set activity indicator frame. Default is .zero
     open var activityIndicatorEdgeInsets: UIEdgeInsets = UIEdgeInsets.zero
     
-    /// Activity Indicator Alingment
+    /// Activity Indicator Alingment. Default is '.center'
     @IBInspectable open var activityIndicatorAlignment = RNActivityIndicatorAlignment.center {
         didSet {
             self.setNeedsLayout()
