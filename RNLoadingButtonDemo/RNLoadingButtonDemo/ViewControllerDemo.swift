@@ -27,14 +27,23 @@ class ViewControllerDemo: UIViewController {
         
         //Mark: Buttons From Nib
         // Configure State
+        let disabledColor = UIColor(white: 0.673, alpha: 1.0)
+        
         btn1.hideTextWhenLoading = false
         btn1.isLoading = false
         btn1.activityIndicatorAlignment = RNActivityIndicatorAlignment.right
         btn1.activityIndicatorEdgeInsets = UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 10)
-        btn1.setTitleColor(UIColor(white: 0.673, alpha: 1.0), for: UIControlState.disabled)
-        btn1.setTitle("connecting           ", for: UIControlState.disabled)
-        btn1.activityIndicatorView.color = .red
-        btn1.activityIndicatorColor = .red
+        btn1.setTitleColor(disabledColor, for: .disabled)
+        
+        // create the attributed string
+        let attributedString = NSMutableAttributedString(
+            string: "connecting",
+            attributes: [
+                NSForegroundColorAttributeName : disabledColor,
+            ]
+        )
+        btn1.setAttributedTitle(attributedString, for: .disabled)
+//        btn1.activityIndicatorColor = .blue
         
         
         btn2.hideTextWhenLoading = false
