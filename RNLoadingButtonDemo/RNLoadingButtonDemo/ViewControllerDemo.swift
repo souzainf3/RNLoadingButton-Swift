@@ -39,7 +39,7 @@ class ViewControllerDemo: UIViewController {
         let attributedString = NSMutableAttributedString(
             string: "connecting",
             attributes: [
-                NSForegroundColorAttributeName : disabledColor,
+                NSAttributedStringKey.foregroundColor : disabledColor,
             ]
         )
         btn1.setAttributedTitle(attributedString, for: .disabled)

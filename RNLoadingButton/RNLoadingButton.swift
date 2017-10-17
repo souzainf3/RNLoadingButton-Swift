@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Romilson Nunes. All rights reserved.
 //
 import UIKit
-public enum RNActivityIndicatorAlignment: Int {
+@objc public enum RNActivityIndicatorAlignment: Int {
     case left
     case center
     case right
@@ -52,7 +52,7 @@ open class RNLoadingButton: UIButton {
     open var activityIndicatorEdgeInsets: UIEdgeInsets = UIEdgeInsets.zero
     
     /// Activity Indicator Alingment. Default is '.center'
-    @IBInspectable open var activityIndicatorAlignment = RNActivityIndicatorAlignment.center {
+    @IBInspectable open var activityIndicatorAlignment: RNActivityIndicatorAlignment = .center {
         didSet {
             self.setNeedsLayout()
         }
