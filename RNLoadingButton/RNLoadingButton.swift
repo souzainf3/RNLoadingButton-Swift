@@ -154,7 +154,9 @@ open class RNLoadingButton: UIButton {
     fileprivate func commonInit() {
         self.adjustsImageWhenHighlighted = true
         self.storeDefaultValues()
-        self.addObservers()
+        #if !TARGET_INTERFACE_BUILDER
+            self.addObservers()
+        #endif
     }
     
     fileprivate func storeDefaultValues() {
