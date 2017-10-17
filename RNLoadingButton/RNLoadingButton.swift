@@ -383,7 +383,6 @@ open class RNLoadingButton: UIButton {
         else {
             dic.removeValue(forKey: state.rawValue)
         }
-        self.configureControl(for: self.currentControlState())
     }
     
     
