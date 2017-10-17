@@ -14,7 +14,8 @@ You can Also choose the position of easily activity indicator or Set It up with 
 
 ## Support
 
-- [x] Swift 3 - Current version (4.x.x)
+- [x] Swift 4 - Current version (5.x.x)
+- [x] Swift 3 - (4.x.x)
 - [x] Swift 2.3 (tag 3.2.0)
 - [x] Swift 2.2 (tag 3.0.0)
 - [x] Swift 1.2 (tag 2.0.0)
