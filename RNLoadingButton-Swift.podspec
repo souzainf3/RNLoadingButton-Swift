@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "RNLoadingButton-Swift"
-  s.version      = "5.0.0"
+  s.version      = "5.1.0"
 
   s.summary      = "An easy-to-use UIButton subclass with an activity indicator."
 
@@ -19,6 +19,6 @@ Pod::Spec.new do |s|
   s.source_files  = "RNLoadingButton/*"
   s.frameworks = "UIKit"
   s.requires_arc = true
-  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.0' }
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.2' }
 
 end
