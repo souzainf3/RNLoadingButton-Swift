@@ -39,7 +39,7 @@ class ViewControllerDemo: UIViewController {
         let attributedString = NSMutableAttributedString(
             string: "connecting",
             attributes: [
-                NSAttributedStringKey.foregroundColor : disabledColor,
+                NSAttributedString.Key.foregroundColor : disabledColor,
             ]
         )
         btn1.setAttributedTitle(attributedString, for: .disabled)
@@ -49,9 +49,9 @@ class ViewControllerDemo: UIViewController {
         btn2.hideTextWhenLoading = false
         btn2.isLoading = false
         btn2.activityIndicatorAlignment = RNActivityIndicatorAlignment.left
-        btn2.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-        btn2.activityIndicatorEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0)
-        btn2.setTitle("Loading", for: UIControlState.disabled)
+        btn2.activityIndicatorViewStyle = UIActivityIndicatorView.Style.gray
+        btn2.activityIndicatorEdgeInsets = UIEdgeInsets.init(top: 0, left: 10, bottom: 0, right: 0)
+        btn2.setTitle("Loading", for: UIControl.State.disabled)
 
     }
 

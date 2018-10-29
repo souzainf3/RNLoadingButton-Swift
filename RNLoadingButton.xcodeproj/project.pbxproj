@@ -14,7 +14,6 @@
 /* Begin PBXFileReference section */
 		4643E90F1CF3F81500B9566B /* RNLoadingButton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RNLoadingButton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4643E9121CF3F81600B9566B /* RNLoadingButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNLoadingButton.h; sourceTree = "<group>"; };
-		4643E9141CF3F81600B9566B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4643E91A1CF3F83A00B9566B /* RNLoadingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNLoadingButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -50,7 +49,6 @@
 			children = (
 				4643E9121CF3F81600B9566B /* RNLoadingButton.h */,
 				4643E91A1CF3F83A00B9566B /* RNLoadingButton.swift */,
-				4643E9141CF3F81600B9566B /* Info.plist */,
 			);
 			path = RNLoadingButton;
 			sourceTree = "<group>";

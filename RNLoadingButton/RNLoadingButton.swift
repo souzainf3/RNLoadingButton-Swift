@@ -59,7 +59,7 @@ open class RNLoadingButton: UIButton {
     }
     
     /// Activity Indicator style. Default is '.gray'
-    open var activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray {
+    open var activityIndicatorViewStyle = UIActivityIndicatorView.Style.gray {
         didSet {
             self.setNeedsLayout()
         }
@@ -74,7 +74,7 @@ open class RNLoadingButton: UIButton {
 
     
     // Internal properties
-    fileprivate let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+    fileprivate let activityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
     
     typealias ControlStateDictionary = [UInt: Any]
     
@@ -108,7 +108,7 @@ open class RNLoadingButton: UIButton {
         
         setupActivityIndicator()
         
-        let states: [UIControlState] = [.normal, .highlighted, .disabled, .selected]
+        let states: [UIControl.State] = [.normal, .highlighted, .disabled, .selected]
         
         /// Store default values
         _ = states.map({
@@ -160,7 +160,7 @@ open class RNLoadingButton: UIButton {
     }
     
     fileprivate func storeDefaultValues() {
-        let states: [UIControlState] = [.normal, .highlighted, .disabled, .selected]
+        let states: [UIControl.State] = [.normal, .highlighted, .disabled, .selected]
         _ = states.map({
             // Images for State
             self.imagens[$0.rawValue] = super.image(for: $0)
@@ -178,10 +178,10 @@ open class RNLoadingButton: UIButton {
     override open func layoutSubviews() {
         super.layoutSubviews()
         
-        self.activityIndicatorView.activityIndicatorViewStyle = self.activityIndicatorViewStyle
+        self.activityIndicatorView.style = self.activityIndicatorViewStyle
         self.activityIndicatorView.color = self.activityIndicatorColor
         self.activityIndicatorView.frame = self.frameForActivityIndicator()
-        self.bringSubview(toFront: self.activityIndicatorView)
+        self.bringSubviewToFront(self.activityIndicatorView)
     }
 
     
@@ -194,33 +194,33 @@ open class RNLoadingButton: UIButton {
         self.activityIndicatorView.isUserInteractionEnabled = false
     }
     
-    fileprivate  func currentControlState() -> UIControlState {
-        var controlState = UIControlState.normal.rawValue
+    fileprivate  func currentControlState() -> UIControl.State {
+        var controlState = UIControl.State.normal.rawValue
         if self.isSelected {
-            controlState += UIControlState.selected.rawValue
+            controlState += UIControl.State.selected.rawValue
         }
         if self.isHighlighted {
-            controlState += UIControlState.highlighted.rawValue
+            controlState += UIControl.State.highlighted.rawValue
         }
         if !self.isEnabled {
-            controlState += UIControlState.disabled.rawValue
+            controlState += UIControl.State.disabled.rawValue
         }
-        return UIControlState(rawValue: controlState)
+        return UIControl.State(rawValue: controlState)
     }
     
-    fileprivate func setControlState(_ value: AnyObject, dic: inout ControlStateDictionary, state: UIControlState) {
+    fileprivate func setControlState(_ value: AnyObject, dic: inout ControlStateDictionary, state: UIControl.State) {
         dic[state.rawValue] = value
         configureControl(for: currentControlState())
     }
     
-    fileprivate func setImage(_ image:UIImage, state:UIControlState) {
+    fileprivate func setImage(_ image:UIImage, state:UIControl.State) {
         setControlState(image, dic: &self.imagens, state: state)
     }
     
     
     // MARK: - Override Setters & Getters
     
-    override open func setTitle(_ title: String?, for state: UIControlState) {
+    override open func setTitle(_ title: String?, for state: UIControl.State) {
         self.store(title, in: &self.titles, for: state)
         if super.title(for: state) != title {
             super.setTitle(title, for: state)
@@ -228,7 +228,7 @@ open class RNLoadingButton: UIButton {
         self.setNeedsLayout()
     }
     
-    open override func setAttributedTitle(_ title: NSAttributedString?, for state: UIControlState) {
+    open override func setAttributedTitle(_ title: NSAttributedString?, for state: UIControl.State) {
         self.store(title, in: &self.attributedTitles, for: state)
         if super.attributedTitle(for: state) != title {
             super.setAttributedTitle(title, for: state)
@@ -236,7 +236,7 @@ open class RNLoadingButton: UIButton {
         self.setNeedsLayout()
     }
     
-    override open func setImage(_ image: UIImage?, for state: UIControlState) {
+    override open func setImage(_ image: UIImage?, for state: UIControl.State) {
         self.store(image, in: &self.imagens, for: state)
         if super.image(for: state) != image {
             super.setImage(image, for: state)
@@ -244,34 +244,34 @@ open class RNLoadingButton: UIButton {
         self.setNeedsLayout()
     }
     
-    override open func title(for state: UIControlState) -> String?  {
+    override open func title(for state: UIControl.State) -> String?  {
         return getValueFrom(type: String.self, on: self.titles, for: state)
     }
     
-    open override func attributedTitle(for state: UIControlState) -> NSAttributedString? {
+    open override func attributedTitle(for state: UIControl.State) -> NSAttributedString? {
         return getValueFrom(type: NSAttributedString.self, on: self.attributedTitles, for: state)
     }
     
-    override open func image(for state: UIControlState) -> UIImage? {
+    override open func image(for state: UIControl.State) -> UIImage? {
         return getValueFrom(type: UIImage.self, on: self.imagens, for: state)
     }
     
     
     // MARK: -  Private Methods
     
-    fileprivate func configureControl(for state: UIControlState) {
+    fileprivate func configureControl(for state: UIControl.State) {
         if self.isLoading {
             self.activityIndicatorView.startAnimating()
             
             if self.hideImageWhenLoading {
                 
                 var imgTmp:UIImage? = nil
-                if let img = self.image(for: UIControlState.normal) {
+                if let img = self.image(for: UIControl.State.normal) {
                     imgTmp = UIImage.clearImage(size: img.size, scale: img.scale)
                 }
                 
-                super.setImage(imgTmp, for: UIControlState.normal)
-                super.setImage(imgTmp, for: UIControlState.selected)
+                super.setImage(imgTmp, for: UIControl.State.normal)
+                super.setImage(imgTmp, for: UIControl.State.selected)
                 
                 super.setImage(imgTmp, for: state)
                 super.imageView?.image = imgTmp
@@ -369,14 +369,14 @@ open class RNLoadingButton: UIButton {
     // MARK: -  Store and recorver values
     /** Value in Dictionary for control State */
     
-    fileprivate func getValueFrom<T>(type: T.Type, on dic: ControlStateDictionary, for state: UIControlState) -> T? {
+    fileprivate func getValueFrom<T>(type: T.Type, on dic: ControlStateDictionary, for state: UIControl.State) -> T? {
         if let value =  dic[state.rawValue] as? T {
             return value
         }
-        return dic[UIControlState.normal.rawValue] as? T
+        return dic[UIControl.State.normal.rawValue] as? T
     }
     
-    fileprivate func store<T>(_ value: T?, in dic: inout ControlStateDictionary, for state: UIControlState) {
+    fileprivate func store<T>(_ value: T?, in dic: inout ControlStateDictionary, for state: UIControl.State) {
         if let _value = value as AnyObject?  {
             dic[state.rawValue] = _value
         }
@@ -438,6 +438,6 @@ fileprivate extension UIImage {
         }
         UIGraphicsEndImageContext()
         
-        return  UIImage(cgImage: outputImage.cgImage!, scale: scale, orientation: UIImageOrientation.up)
+        return  UIImage(cgImage: outputImage.cgImage!, scale: scale, orientation: UIImage.Orientation.up)
     }
 }
