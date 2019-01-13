@@ -74,7 +74,7 @@ open class RNLoadingButton: UIButton {
 
     
     // Internal properties
-    fileprivate let activityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
+    fileprivate let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorView.Style.gray)
     
     typealias ControlStateDictionary = [UInt: Any]
     
@@ -178,10 +178,10 @@ open class RNLoadingButton: UIButton {
     override open func layoutSubviews() {
         super.layoutSubviews()
         
-        self.activityIndicatorView.style = self.activityIndicatorViewStyle
+        self.activityIndicatorView.activityIndicatorViewStyle = self.activityIndicatorViewStyle
         self.activityIndicatorView.color = self.activityIndicatorColor
         self.activityIndicatorView.frame = self.frameForActivityIndicator()
-        self.bringSubviewToFront(self.activityIndicatorView)
+        self.bringSubview(toFront: self.activityIndicatorView)
     }
 
     
