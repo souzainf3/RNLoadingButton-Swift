@@ -5,6 +5,7 @@
 //  Created by Romilson Nunes on 06/06/14.
 //  Copyright (c) 2014 Romilson Nunes. All rights reserved.
 //
+#if os(iOS)
 import UIKit
 @objc public enum RNActivityIndicatorAlignment: Int {
     case left
@@ -441,3 +442,4 @@ fileprivate extension UIImage {
         return  UIImage(cgImage: outputImage.cgImage!, scale: scale, orientation: UIImage.Orientation.up)
     }
 }
+#endif
