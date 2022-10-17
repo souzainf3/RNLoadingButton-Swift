@@ -1,5 +1,7 @@
 # RNLoadingButton-Swift
 
+# This Repository ONLY provides SPM support and update.
+
 RNLoadingButotn-Swift is based on [RNLoadingButton](https://github.com/souzainf3/RNLoadingButton) write in Objective-C.
 
 An easy-to-use UIButton subclass with an activity indicator.
