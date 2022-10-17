@@ -41,6 +41,10 @@ You can Also choose the position of easily activity indicator or Set It up with 
 1. Add a pod entry for RNActivityView to your Podfile `pod 'RNLoadingButton-Swift'`
 2. Install the pod(s) by running `pod install`.
 
+#### Swift Package Manager (SPM)
+1. Open Swift Package Manager, copy `https://github.com/Alamofire/Alamofire.git` to the search bar
+2. For version, you may use tags or master branch.
+
 #### Manually
 
 1. Drag RNLoadingButton.swift to your project
