@@ -42,7 +42,7 @@ You can Also choose the position of easily activity indicator or Set It up with 
 2. Install the pod(s) by running `pod install`.
 
 #### Swift Package Manager (SPM)
-1. Open Swift Package Manager, copy `https://github.com/Alamofire/Alamofire.git` to the search bar
+1. Open Swift Package Manager, copy `https://github.com/tommyming/RNLoadingButton-Swift-SPM` to the search bar
 2. For version, you may use tags or master branch.
 
 #### Manually
