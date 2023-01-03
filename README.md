@@ -34,7 +34,7 @@ You can Also choose the position of easily activity indicator or Set It up with 
 // Configure State
 btn1.hideTextWhenLoading = false
 btn1.isLoading = false
-btn1.activityIndicatorAlignment = RNActivityIndicatorAlignment.right
+btn1.activityIndicatorAlignment = .right
 btn1.activityIndicatorEdgeInsets = UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 10)
 btn1.setTitleColor(UIColor(white: 0.673, alpha: 1.0), for: UIControlState.disabled)
 btn1.setTitle("connecting", for: UIControlState.disabled)
@@ -66,7 +66,7 @@ activityIndicatorEdgeInsets: UIEdgeInsets
 
 * Activity Indicator Alingment. Default is '.center'
 ```swift
-activityIndicatorAlignment: RNActivityIndicatorAlignment
+activityIndicatorAlignment: ActivityIndicatorAlignment
 ```
 
 * Activity Indicator style. Default is '.gray'
