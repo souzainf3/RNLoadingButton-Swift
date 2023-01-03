@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
-  s.name         = "RNLoadingButton-Swift"
-  s.version      = "5.1.0"
+  s.name         = "RNLoadingButton"
+  s.version      = "6.0.0"
 
   s.summary      = "An easy-to-use UIButton subclass with an activity indicator."
 
@@ -11,9 +11,9 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/souzainf3/RNLoadingButton-Swift"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
   s.license      = { :type => "MIT", :file => "LICENSE" }
-  s.author             = { "Romilson Nunes" => "souzainf3@yahoo.com.br" }
+  s.author       = { "Romilson Nunes" => "souzainf3@yahoo.com.br" }
   s.social_media_url   = "http://twitter.com/souzainf3"
-  s.platform     = :ios, "8.0"
+  s.platform     = :ios, "11.0"
   s.source       = { :git => "https://github.com/souzainf3/RNLoadingButton-Swift.git", :tag => s.version.to_s }
 
   s.source_files  = "RNLoadingButton/*"
