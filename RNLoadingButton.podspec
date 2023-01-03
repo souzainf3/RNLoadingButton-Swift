@@ -20,5 +20,6 @@ Pod::Spec.new do |s|
   s.frameworks = "UIKit"
   s.requires_arc = true
   s.pod_target_xcconfig = { 'SWIFT_VERSION' => '5.0' }
+  s.swift_versions = ['5']
 
 end
