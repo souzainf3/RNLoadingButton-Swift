@@ -2,8 +2,6 @@
 //  RNLoadingButton.h
 //  RNLoadingButton
 //
-//  Created by Andrew Breckenridge on 5/23/16.
-//  Copyright © 2016 Andrew Breckenridge. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

@@ -10,8 +10,11 @@ import UIKit
 
 class ViewControllerDemo: UIViewController {
     
-    @IBOutlet var btn1:RNLoadingButton!
-    @IBOutlet var btn2:RNLoadingButton!
+    @IBOutlet private(set) var button1: LoadingButton!
+    @IBOutlet private(set) var button2: LoadingButton!
+    
+    
+    // MARK: - Initializers
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -22,6 +25,9 @@ class ViewControllerDemo: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+    
+    // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,11 +35,14 @@ class ViewControllerDemo: UIViewController {
         // Configure State
         let disabledColor = UIColor(white: 0.673, alpha: 1.0)
         
-        btn1.hideTextWhenLoading = false
-        btn1.isLoading = false
-        btn1.activityIndicatorAlignment = RNActivityIndicatorAlignment.right
-        btn1.activityIndicatorEdgeInsets = UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 10)
-        btn1.setTitleColor(disabledColor, for: .disabled)
+        button1.hideTextWhenLoading = false
+        button1.isLoading = false
+        button1.activityIndicatorAlignment = .right
+        button1.activityIndicatorEdgeInsets = UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 10)
+        button1.setTitleColor(disabledColor, for: .disabled)
+        button1.layer.borderWidth = 1
+        button1.layer.borderColor = UIColor.white.cgColor
+        button1.layer.cornerRadius = 10
         
         // create the attributed string
         let attributedString = NSMutableAttributedString(
@@ -42,21 +51,21 @@ class ViewControllerDemo: UIViewController {
                 NSAttributedString.Key.foregroundColor : disabledColor,
             ]
         )
-        btn1.setAttributedTitle(attributedString, for: .disabled)
-//        btn1.activityIndicatorColor = .blue
+        button1.setAttributedTitle(attributedString, for: .disabled)
         
+        button2.hideTextWhenLoading = false
+        button2.isLoading = false
+        button2.activityIndicatorAlignment = .left
+        button2.activityIndicatorViewStyle = UIActivityIndicatorView.Style.gray
+        button2.activityIndicatorEdgeInsets = UIEdgeInsets.init(top: 0, left: 10, bottom: 0, right: 0)
+        button2.layer.borderWidth = 1
+        button2.layer.borderColor = UIColor.white.cgColor
+        button2.layer.cornerRadius = 10
         
-        btn2.hideTextWhenLoading = false
-        btn2.isLoading = false
-        btn2.activityIndicatorAlignment = RNActivityIndicatorAlignment.left
-        btn2.activityIndicatorViewStyle = UIActivityIndicatorView.Style.gray
-        btn2.activityIndicatorEdgeInsets = UIEdgeInsets.init(top: 0, left: 10, bottom: 0, right: 0)
-        btn2.setTitle("Loading", for: UIControl.State.disabled)
-
+        button2.setTitle("Loading", for: UIControl.State.disabled)
     }
-
     
-    func randomAttributes(button:RNLoadingButton) {
+    private func randomAttributes(button: LoadingButton) {
         
         buttonTapAction(button)
         
@@ -66,16 +75,17 @@ class ViewControllerDemo: UIViewController {
         }
     }
     
-    @IBAction func buttonTapAction(_ button:RNLoadingButton) {
-        
+    
+    // MARK: - Actions
+
+    @IBAction private func buttonTapAction(_ button: LoadingButton) {
         button.isLoading = !button.isLoading
-        button.activityIndicatorAlignment = RNActivityIndicatorAlignment.center
+        button.activityIndicatorAlignment = .center
         button.hideImageWhenLoading = true
         
     }
     
-    
-    @IBAction func doTap(_ sender: RNLoadingButton) {
+    @IBAction private func doTap(_ sender: LoadingButton) {
         
         sender.isEnabled = false
         sender.isLoading = true;
@@ -92,8 +102,5 @@ class ViewControllerDemo: UIViewController {
                 sender.isSelected = !sender.isSelected
             }
         }
-        
     }
-
-
 }
