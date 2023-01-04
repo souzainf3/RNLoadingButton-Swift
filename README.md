@@ -1,8 +1,7 @@
 # RNLoadingButton
 
-RNLoadingButotn is based on [RNLoadingButton](https://github.com/souzainf3/RNLoadingButton) write in Objective-C.
-
-An easy-to-use UIButton subclass with an activity indicator.
+RNLoadingButotn is based an easy-to-use UIButton subclass with an activity indicator.
+Objective-C version [RNLoadingButton](https://github.com/souzainf3/RNLoadingButton).
 
 The activity state is configurable and can hide the image or text while the activity indicator is displaying .
 You can Also choose the position of easily activity indicator or Set It up with a spacing.
@@ -13,8 +12,13 @@ You can Also choose the position of easily activity indicator or Set It up with 
 [![](https://raw.githubusercontent.com/souzainf3/RNLoadingButton-Swift/master/RNLoadingButtonDemo/Screens/screen2.png)](https://raw.githubusercontent.com/souzainf3/RNLoadingButton-Swift/master/RNLoadingButtonDemo/Screens/screen2.png)
 
 
-## Adding RNLoadingButton to your project
+## Adding RNLoadingButton
 
+
+### Swift Package Manager (SPM)
+
+Open Swift Package Manager, copy https://github.com/souzainf3/RNLoadingButton-Swift to the search bar
+For version, you may use tags or master branch.
 
 #### Cocoapods
 
@@ -24,6 +28,7 @@ You can Also choose the position of easily activity indicator or Set It up with 
 #### Manually
 
 1. Drag `LoadingButton.swift` to your project
+
 
 ## Using RNLoadingButton
 
