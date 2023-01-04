@@ -15,7 +15,7 @@ You can Also choose the position of easily activity indicator or Set It up with 
 ## Adding RNLoadingButton
 
 
-### Swift Package Manager (SPM)
+#### Swift Package Manager (SPM)
 
 Open Swift Package Manager, copy https://github.com/souzainf3/RNLoadingButton-Swift to the search bar
 For version, you may use tags or master branch.
