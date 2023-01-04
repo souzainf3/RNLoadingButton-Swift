@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "RNLoadingButton"
-  s.version      = "6.0.0"
+  s.version      = "6.1.0"
 
   s.summary      = "An easy-to-use UIButton subclass with an activity indicator."
 
@@ -14,9 +14,10 @@ Pod::Spec.new do |s|
   s.social_media_url   = "http://twitter.com/souzainf3"
   s.platform     = :ios, "11.0"
   s.source       = { :git => "https://github.com/souzainf3/RNLoadingButton-Swift.git", :tag => s.version.to_s }
+  s.swift_version = '5.0'
 
-  s.source_files  = "Sources/*"
-  s.frameworks = "UIKit"
+  s.source_files = "Sources/*"
+  s.frameworks   = "UIKit"
   s.requires_arc = true
   s.pod_target_xcconfig = { 'SWIFT_VERSION' => '5.0' }
 
