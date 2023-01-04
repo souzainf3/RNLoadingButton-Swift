@@ -15,7 +15,7 @@ import UIKit
 
 open class LoadingButton: UIButton {
     
-    // Loading state
+    /// Loading state. Default value is `false`
     @IBInspectable
     open var isLoading: Bool = false {
         didSet {
@@ -27,21 +27,21 @@ open class LoadingButton: UIButton {
         }
     }
     
-    /// Hide image when loading is visible.
+    /// Hide image when loading is visible. Default value is `true`
     @IBInspectable open var hideImageWhenLoading: Bool = true {
         didSet {
             configureControl(for: currentControlState())
         }
     }
     
-    /// Hide text when loading is visible.
+    /// Hide text when loading is visible. Default value is `true`
     @IBInspectable open var hideTextWhenLoading: Bool = true {
         didSet {
             configureControl(for: currentControlState())
         }
     }
     
-    /// Edge Insets to set activity indicator frame. Default is .zero
+    /// Edge Insets to set activity indicator frame. Default value is `.zero`.
     open var activityIndicatorEdgeInsets: UIEdgeInsets = .zero
     
     /// Activity Indicator Alingment. Default is '.center'
@@ -51,14 +51,14 @@ open class LoadingButton: UIButton {
         }
     }
     
-    /// Activity Indicator style. Default is '.gray'
+    /// Activity Indicator style. Default value is  `.gray`
     open var activityIndicatorViewStyle: UIActivityIndicatorView.Style = .gray {
         didSet {
             self.setNeedsLayout()
         }
     }
     
-    /// Color to activityIndicatorView. Default is 'nil'
+    /// Color to activityIndicatorView. Default value is  `nil`
     @IBInspectable open var activityIndicatorColor: UIColor? {
         didSet {
             self.setNeedsLayout()
