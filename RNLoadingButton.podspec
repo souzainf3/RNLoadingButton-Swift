@@ -9,14 +9,13 @@ Pod::Spec.new do |s|
                    DESC
 
   s.homepage     = "https://github.com/souzainf3/RNLoadingButton-Swift"
-  # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author       = { "Romilson Nunes" => "souzainf3@yahoo.com.br" }
   s.social_media_url   = "http://twitter.com/souzainf3"
   s.platform     = :ios, "11.0"
   s.source       = { :git => "https://github.com/souzainf3/RNLoadingButton-Swift.git", :tag => s.version.to_s }
 
-  s.source_files  = "RNLoadingButton/*"
+  s.source_files  = "Sources/*"
   s.frameworks = "UIKit"
   s.requires_arc = true
   s.pod_target_xcconfig = { 'SWIFT_VERSION' => '5.0' }
