@@ -1,0 +1,4 @@
+module RNLoadingButton {
+    header "/Users/romilsonnunes/Workspace/Personal/RNLoadingButton/.build/arm64-apple-macosx/debug/RNLoadingButton.build/RNLoadingButton-Swift.h"
+    requires objc
+}

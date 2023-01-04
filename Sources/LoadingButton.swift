@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Romilson Nunes. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
 
 @objc public enum ActivityIndicatorAlignment: Int {
@@ -424,3 +425,4 @@ private extension UIImage {
         return  UIImage(cgImage: outputImage.cgImage!, scale: scale, orientation: UIImage.Orientation.up)
     }
 }
+#endif

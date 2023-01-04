@@ -84,7 +84,7 @@
 				9BFCD6991BE7C139000182A4 /* LoadingButton.swift */,
 			);
 			name = RNLoadingButton;
-			path = ../../RNLoadingButton;
+			path = ../../Sources;
 			sourceTree = "<group>";
 		};
 		AC85DB41194231C200D6D8D3 = {
