@@ -1,5 +1,16 @@
 # Created by https://www.gitignore.io/api/xcode,swift,objective-c,osx
 
+.DS_Store
+/.build
+/Packages
+/*.xcodeproj
+xcuserdata/
+DerivedData/
+.swiftpm/config/registries.json
+.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
+.netrc
+
+
 ### Xcode ###
 # Xcode
 #

@@ -1,6 +1,0 @@
-version: "Apple Swift version 5.7.1 (swiftlang-5.7.1.135.3 clang-1400.0.29.51)"
-options: "7a2d86c06173b0e5f1b013c580ded4bb9c9abf0408a1eac3dd5bf807bd001a31"
-build_start_time: [1672772959, 97188949]
-build_end_time: [1672772959, 207643032]
-inputs:
-  "/Users/romilsonnunes/Workspace/Personal/RNLoadingButton/Sources/LoadingButton.swift": [1672772940, 900117635]
